@@ -1,6 +1,6 @@
 ---
 layout: splash
-title: "Information Overload!"
+title: "Introduction to Data Analytics"
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
@@ -14,21 +14,24 @@ header:
       url: "/assignments/"
     - label: "Course Policies"
       url: "/policies/"
-excerpt: "Text Technologies from the Printing Press to the Smartphone.
-Northwestern University. Spring 2021."
+excerpt: "DA 101. Denison University. Fall 2021."
 ---
 
-**Tuesdays from 12:30--1:50pm on Zoom** (see Canvas for the Zoom link)
+**Section 01: MWF 8:30-9:20am, Lab on Mondays 1:30-4:20pm  
+Section 04: MWF 11:30am-12:20pm, Lab on Wednesdays 1:30-4:20pm**
 
 ## Course Description
 
-This course explores the anxiety, exhaustion, and unease brought on by information technologies. We will trace emotional responses to technological change, from the shock of the printing press to the malaise of the present "information economy." How did new text technologies reshape language and society? Who is permitted access to certain kinds of information and why?  We will take a hands-on approach to these questions by pairing literature that addresses the anxieties of technology, like the scifi linguistics of *Arrival* and the postapocalyptic Shakespeare of *Station Eleven*, with book history and digital humanities techniques designed to manage information. Students will learn how books are made, how search algorithms work, and how to analyze text with code.
+Many of the most pressing problems in the world can be addressed with data. We are awash in data and modern citizenship demands that we become literate in how to interpret data, what assumptions and processes are necessary to analyze data, as well as how we might participate in generating our own analyses and presentations of data. Consequently, data analytics is an emerging field with skills applicable to a wide variety of disciplines. This course introduces analysis, computation, and presentation concerns through the investigation of data driven puzzles in wide array of fields – political, economic, historical, social, biological, and others. No previous coding or statistics experience is required.
 
 ## Learning Goals
 
-During this quarter, we will:
+At the end of this course, you should be able to:
 
-- explore current debates about emotional and intellectual responses to information overload
-- put those debates into context with the long history of information technology
-- learn analog and digital strategies for managing large amounts of information
-- interrogate our own emotional responses to the information overload in our lives as they relate to the larger cultural conversation
+- identify, describe, and use different formats of data and data sources
+- collect, clean, store, and extract data needed for an analysis
+- write basic computer programs using RStudio for a reproducible data analysis workflow
+- create data visualizations and interpret them
+- perform statistical analysis on a dataset, and interpret the results
+- evaluate the ethical, social, and legal issues in data collection, analysis, and security
+- combine the above to communicate and interpret all aspects of data analysis (data, cleaning, analysis, results) to a diverse, technical or non-technical audience, in oral, visual, and written format

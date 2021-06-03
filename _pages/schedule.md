@@ -1,53 +1,37 @@
 ---
 title: Schedule & Readings
 permalink: /schedule/
-toc: true
+classes: wide
+sidebar:
+  - title: "Note on the schedule"
+    text: "*Keep in mind that some of this schedule could change throughout the semester. However, if anything changes I'll update this page, and I'll be sure to give you plenty of advance notice.*"
+  - title: "Course text"
+    text: "[*R for Data Science*](http://r4ds.had.co.nz/) by Hadley and Grolemund (Free online!)"
 ---
 
 ## Class Schedule
 
-*n.b. Keep in mind that some of this schedule could change throughout the quarter. However, if anything changes I'll be sure to give you plenty of advance notice.*
+**On Monday and Wednesday we'll cover new topics and skills, and on Fridays we'll discuss readings related to those topics. This schedule also includes the topics for the Labs, which will reinforce what we do in class.**
 
-**Tuesdays we will meet as a group on Zoom; Thursdays you will work independently.**
-
-**Workshops for Thursday will be posted immediately after Tuesday's class, to the [Workshops](/info_overload/workshops/) page.**
-
-Date|Material
---|---
-**Week 1**|
-Thu 1 Apr | Introductions
-**Week 2**|
-Tue 6 Apr|*The Story of Your Life* (clips from *Arrival*)
-by Thu 8 Apr|Workshop: Stop Sign
-**Week 3**|
-Tue 13 Apr|*The Staple of News*, Acts I-III
-by Thu 15 Apr|Workshop: How Books are Made
-**Week 4**|
-Tue 20 Apr|*The Staple of News*, Acts IV & V
-by Thu 22 Apr|Workshop: EEBO, XML, & Digital Editing
-**Week 5**|
-Tue 27 Apr|*Areopagitica*, *The Narrative of Frederick Douglas* Ch. 1, 6, & 7
-by Thu 29 Apr|Workshop: Networks
-**Week 6**|
-Tue 4 May|Dickinson poems, [When Novels Were Bad for You](https://op-talk.blogs.nytimes.com/2014/09/14/when-novels-were-bad-for-you/), [Sea and Spar Between](https://nickm.com/montfort_strickland/sea_and_spar_between/)
-by Thu 6 May|No Workshop, work on midterm
-**Week 7**|
-Mon 10 May|Midterm Essay Due
-Tue 11 May|Selections from *Americanah*
-by Thu 13 May|Workshop: Text as Interface
-**Week 8**|
-Tue 18 May|*Station Eleven*
-by Thu 20 May|Workshop: Poetry chatbot
-**Week 9**|
-Tue 25 May|*Station Eleven*, more from *Algorithms of Oppression*
-by Thu 27 May|Workshop: Building a search engine
-**Week 10**|
-Tue 1 June|Lightning Presentations and Wrap-Up
-by Thu 3 June|Workshop: Work on your Final Projects (meet w/ me individually)
-
-## Course Materials
-
-Most of our course materials will be PDFs (posted to the Files section of canvas), or links shared in the schedule above. For your own convenience, and to make our longer readings easier, you may consider purchasing the two books listed below. However, having physical copies of these is **not** a prerequisite for the class: if you can't get these books for any reason, simply let me know, and we'll work it out.
-
-- Ben Jonson *The Staple of News* (ISBN 9780719059063)
-- Emily St. John Mandel *Station Eleven* (ISBN 0804172447)
+Date|Mon./Wed. Topics|Lab|Fri. Discussion
+--|---|--|---
+|**Module 1: Data Basics**|
+Aug. 30--Sept. 3|What is Data?|
+Sept. 6-10|What is Analysis?|
+Sept. 13-17|Wrangling Data|
+Sept. 20-24|Visualizing Data|
+|**Module 2: Describing**|
+Sept. 27--Oct. 1|Ethical Data Analysis: Understanding Bias|
+Oct. 4-8|Descriptive Analytics: distributions, summary statistics|
+Oct. 11-15|Descriptive Analytics: hypothesis testing|
+|**Module 4: Predicting**|
+Oct. 20-22|Predictive Analytics: linear regression|No Lab!|
+Oct. 25-29|Predictive Analytics: correlation vs. causation|
+Nov. 1-5|Predictive Analytics: multivariate regression, model selection|
+|**Module 4: Applying**|
+Nov. 8-12|Networks & Social Data|
+Nov. 15-19|Maps & Geographic Data|
+**THANKSGIVING BREAK**|
+Nov. 29--Dec. 3|Advanced Programming: debugging, regular expressions, open data practices
+Dec. 6-10|Communication: presenting data analysis, student presentations
+Dec. 13|Communication: more student presentations and wrap-up
