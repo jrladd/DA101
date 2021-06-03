@@ -20,7 +20,7 @@
 
 local: "en-US"
 title: Data Analytics 101
-subtitle: "From the Printing Press to the Smartphone"
+subtitle: "Introduction to Data Analytics"
 name: John R. Ladd
 email: laddj@denison.edu
 description: >- # this means to ignore newlines until "baseurl:"
