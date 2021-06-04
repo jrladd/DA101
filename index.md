@@ -8,12 +8,12 @@ header:
   actions:
     - label: "Schedule & Readings"
       url: "/schedule/"
-    - label: "Workshops"
-      url: "/workshops/"
-    - label: "Assignments"
-      url: "/assignments/"
-    - label: "Course Policies"
-      url: "/policies/"
+    #- label: "Workshops"
+      #url: "/workshops/"
+    #- label: "Assignments"
+      #url: "/assignments/"
+    #- label: "Course Policies"
+      #url: "/policies/"
 excerpt: "DA 101. Denison University. Fall 2021."
 ---
 
