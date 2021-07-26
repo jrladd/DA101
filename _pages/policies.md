@@ -53,9 +53,9 @@ Please be respectful with your use of laptops and technology in class. I request
 
 What we do in college is not easy, on many fronts. Students are challenged with feelings of depression, anxiety, and self harm at astonishingly high rates. Learning is hard, and you will likely be challenged in college in ways that you haven’t experienced before. Learning while life is hard is even harder. Please take care of yourself. Drink water, eat well, and get more than seven hours of sleep. Have some hobbies, but don’t feel the need to do *everything*. If you are feeling depressed, withdrawn, anxious, like an impostor, or you are having specific problems with friends, family, grief, culture shock, etc., please seek help. There are many resources on campus, and my door and email is always open.
 
-The Denison Health and Wellness Center offers free and confidential counseling services: https://denison.edu/campus/health/counseling-services
+The Denison Health and Wellness Center offers free and confidential counseling services: <https://denison.edu/campus/health/counseling-services>
 
-The Red Thread program provides aid to participate in co-curricular experiences and in cases of unexpected financial emergency or need. This link can tell you more about it, and other funding resources:: https://my.denison.edu/node/3369
+The Red Thread program provides aid to participate in co-curricular experiences and in cases of unexpected financial emergency or need. This link can tell you more about it, and other funding resources: <https://my.denison.edu/node/3369>
 
 Denison has a campus food pantry if you need assistance. It is open to all Denison students 6-8 pm on Tuesdays in Higley 014 and you can email kalinoskis@denison.edu if you have any questions.
 
