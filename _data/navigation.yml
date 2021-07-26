@@ -5,9 +5,9 @@ main:
     #url: /workshops/
     #- title: "Assignments"
     #url: /assignments/
-    #- title: "Course Policies"
-    #url: /policies/
-    #- title: "Ground Rules"
-    #url: /groundrules/
+  - title: "Course Policies"
+    url: /policies/
+  - title: "Ground Rules"
+    url: /groundrules/
     #- title: "Credits"
     #url: /credits/

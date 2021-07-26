@@ -9,8 +9,8 @@ permalink: /groundrules/
 
 **YOU ARE NOT BAD AT TECHNOLOGY.** That doesn't even make sense, because technology is not any one thing; it's a whole bunch of different skills, and it's really unlikely that you're bad at all of them.
 
-**YOUR MISTAKE IS ALMOST INVARIABLY MINOR.** This is really common when people are learning new skills for the first time. I have seen people give up in frustration because they can't remember where they saved their file. THIS IS FIXABLE. It does not mean you are a hopeless case!
+**YOUR MISTAKE IS ALMOST INVARIABLY MINOR.** This is really common when people are learning new coding skills for the first time. I have seen people give up in frustration because they can't remember where they saved their file. THIS IS FIXABLE. It does not mean you are a hopeless case!
 
-**NO ONE IS AN EXPERT AT EVERYTHING.** You just can't be on the cutting edge of text analysis, network analysis, GIS, Python, data visualization, etc., etc. Even seasoned experts are usually only great at one or two of these. Our goal here is to be good generalists!
+**NO ONE IS AN EXPERT AT EVERYTHING.** You just can't be on the cutting edge of exploratory data analysis, statistical modeling, R, data visualization, network analysis, GIS, etc., etc. Even seasoned experts are usually only great at one or two of these. Our goal here is to be good generalists!
 
 **WE DO NOT SINK OR SWIM IN MY CLASS.** There is *no shame* in reaching out to me or your classmates for help. Everyone swims or no one swims! 
