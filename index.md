@@ -4,7 +4,7 @@ title: "Introduction to Data Analytics"
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
-  overlay_image: /assets/images/lovelace.jpg
+  overlay_image: /assets/images/startrek.jpg
   actions:
     - label: "Schedule & Readings"
       url: "/schedule/"
