@@ -27,7 +27,7 @@ Sept. 27--Oct. 1|Descriptive Analytics: distributions, summary statistics, hypot
 Oct. 4-8|Descriptive Analytics: hypothesis testing|Substance Use|[Stop Misusing P-Values](https://fivethirtyeight.com/features/statisticians-found-one-thing-they-can-agree-on-its-time-to-stop-misusing-p-values/)
 Oct. 11-15|Ethical Data Analysis: Understanding Bias|Ethics|[Systemic Algorithmic Harms](https://points.datasociety.net/systemic-algorithmic-harms-e00f99e72c42)
 Oct. 20-22|Special Topics: Maps & Geographic Data|No Lab! (Fall Break)|
-|**Module 4: Predict**|
+|**Module 3: Predict**|
 Oct. 25-29|Predictive Analytics: linear regression|Political Polarization|[So About That Thermometer Data](https://slate.com/technology/2020/04/kinsa-smart-thermometer-data-fevers-covid19.html)
 Nov. 1-5|Predictive Analytics: correlation vs. causation|Political Polarization|[The Happiness Calculator](https://gimletmedia.com/shows/reply-all/kwh96n)
 Nov. 8-12|Predictive Analytics: multivariate regression, model selection|AirBnB|[Scikit-learn's Defaults are Wrong](https://ryxcommar.com/2019/08/30/scikit-learns-defaults-are-wrong/); [Wine and Math](https://pudding.cool/2021/03/wine-model/)
