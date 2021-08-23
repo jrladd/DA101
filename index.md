@@ -10,10 +10,10 @@ header:
       url: "/schedule/"
     #- label: "Workshops"
       #url: "/workshops/"
-    #- label: "Assignments"
-      #url: "/assignments/"
-    #- label: "Course Policies"
-      #url: "/policies/"
+    - label: "Assignments & Grading"
+      url: "/assignments/"
+    - label: "Course Policies"
+      url: "/policies/"
 excerpt: "DA 101. Denison University. Fall 2021."
 ---
 
@@ -22,7 +22,7 @@ Section 04: MWF 11:30am-12:20pm, Lab on Wednesdays 1:30-4:20pm**
 
 ## Course Description
 
-Many of the most pressing problems in the world can be addressed with data. We are awash in data and modern citizenship demands that we become literate in how to interpret data, what assumptions and processes are necessary to analyze data, as well as how we might participate in generating our own analyses and presentations of data. Consequently, data analytics is an emerging field with skills applicable to a wide variety of disciplines. This course introduces analysis, computation, and presentation concerns through the investigation of data driven puzzles in wide array of fields – political, economic, historical, social, biological, and others. No previous coding or statistics experience is required.
+Many of the most pressing problems in the world can be addressed with data. We are awash in data and, modern citizenship demands that we become literate in how to interpret data, what assumptions and processes are necessary to analyze data, as well as how we might participate in generating our own analyses and presentations of data. Consequently, data analytics is an emerging field with skills applicable to a wide variety of disciplines. This course introduces analysis, computation, and presentation concerns through the investigation of data driven puzzles in a wide array of fields – political, economic, historical, social, biological, and others. No previous coding or statistics experience is required.
 
 ## Learning Goals
 

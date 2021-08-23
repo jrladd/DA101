@@ -3,7 +3,7 @@ main:
     url: /schedule/
     #- title: "Workshops"
     #url: /workshops/
-    #- title: "Assignments"
+  - title: "Assignments & Grading"
     #url: /assignments/
   - title: "Course Policies"
     url: /policies/
