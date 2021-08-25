@@ -22,8 +22,7 @@ In between classes you should:
 
 Each class must create its own learning community as the result of shared efforts on the part of all members. It is your responsibility as a member of this learning community to help your fellow students by attending class and turning in assignments on time. If you must miss a class or turn in an assignment late, please let me know beforehand so that we may work out a way for you to make up the work. You do *not* need a doctor's note or other written excuse, but please let me know if there are special circumstances that may prevent you from completing a large amount of coursework.
 
-
-### Participation
+### Attendance & Participation
 
 Good participation should be understood as consistent and thoughtful contribution to the classroom community, an engagement with course materials and conversations, and a general responsiveness to (and respect for) one’s fellow students and instructor. This isn’t an accounting of how often you speak in class. Instead, it’s about what you offer to the intellectual life of the class, and everyone contributes to this on-going work in different ways. You won't be directly graded on participation and attendance, but particularly because so much of the class will consist of hands-on work, you'll get participation credit simply for attending class and doing the work with care. **If you have to miss class for any reason, please let me know in advance**, especially if you have to miss more than one class in a row. We're all in this together, and I'll do my best to make sure no one falls behind.
 
