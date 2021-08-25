@@ -4,7 +4,7 @@ main:
     #- title: "Workshops"
     #url: /workshops/
   - title: "Assignments & Grading"
-    #url: /assignments/
+    url: /assignments/
   - title: "Course Policies"
     url: /policies/
   - title: "Ground Rules"
