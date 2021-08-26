@@ -23,7 +23,7 @@ excerpt: "DA 101. Denison University. Fall 2021."
 Section 04: MWF 11:30am-12:20pm, Lab on Wednesdays 1:30-4:20pm, TA Claire Powell**
 
 Dr. Ladd's Student Drop-In Hours: Tu 1-3pm, W 9:30-10:30am, Th 10am-12pm in Burton Morgan 411   
-TA Hours (for all DA 101 TAs) are posted online here:
+TA Hours (for all DA 101 TAs) are posted online [here](https://docs.google.com/document/d/1-lmNhmP8qp2ki3bSJdhAOYEccW5VeR2Mo2bKLz3MrlU/edit?usp=sharing).
 
 ## Course Description
 
