@@ -36,18 +36,7 @@ Instructions and resources for each lab will be posted on NoteBowl/ActiveClass, 
 
 **Due** by 11:59pm on the night before your next lab session. (So, Sunday nights for those of you with Monday lab and Tuesday nights for those of you with Wednesday lab.) You'll receive feedback from me typically by Thursday or Friday of that same week.
 
-The point breakdown for labs is as follows:
-
-Lab|Number of Weeks|Point Value
----|--|---
-Biology/Ecology|2|10
-Data Collection|1|5
-Substance Use|2|10
-Ethics|1|5
-Political Polarization|2|10
-AirBnB|1|5
-Marvel Comics|1|5
-**Total Lab Points**||**50**
+There are 10 distinct lab assignments, though some lab topics span multiple weeks. They're all weighted equally in determining your final lab grade. Since overall labs are worth 50% of your final grade, each individual lab week is worth 5% of your final grade.
 
 ### Oral Presentation
 
