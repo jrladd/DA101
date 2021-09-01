@@ -9,5 +9,7 @@ main:
     url: /policies/
   - title: "Ground Rules"
     url: /groundrules/
+  - title: "Slides"
+    url: /slides/
     #- title: "Credits"
     #url: /credits/

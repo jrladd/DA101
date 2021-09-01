@@ -16,6 +16,8 @@ header:
       url: "/policies/"
     - label: "NoteBowl"
       url: "https://notebowl.denison.edu"
+    - label: "Slides"
+      url: "/slides/"
 excerpt: "DA 101. Denison University. Fall 2021."
 ---
 
