@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="DA 101, Dr. Ladd">
+  <title>Metadata and the Data Analysis Cycle</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/moon.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Metadata and the Data Analysis Cycle</h1>
+  <p class="author">DA 101, Dr. Ladd</p>
+  <p class="date">Week 2</p>
+</section>
+
+<section class="slide level2">
+
+<p><img data-src="img/xkcd_data_pipeline.png" /></p>
+<p><a href="https://xkcd.com/2054/">xkcd.com/2054</a></p>
+</section>
+<section>
+<section id="what-is-metadata" class="title-slide slide level1">
+<h1>What is Metadata?</h1>
+
+</section>
+<section class="slide level2">
+
+<p><img data-src="img/brokenearth.jpeg" /></p>
+</section>
+<section id="metadata-can-be-descriptive." class="slide level2">
+<h2>Metadata Can Be Descriptive.</h2>
+<p>It can help you find and understand a dataset or resource.</p>
+<p><em>Broken Earth</em> Examples:</p>
+<ul>
+<li>Titles: <em>The Fifth Season</em>, <em>The Obelisk Gate</em>, <em>The Stone Sky</em></li>
+<li>Author: N.K. Jemisin</li>
+<li>Page count: 1424 pages</li>
+</ul>
+</section>
+<section id="metadata-can-be-administrative." class="slide level2">
+<h2>Metadata Can Be Administrative.</h2>
+<p>It can help you manage a resource and tell you about how it was created.</p>
+<p><em>Broken Earth</em> Examples:</p>
+<ul>
+<li>Publisher: Orbit</li>
+<li>ISBN: 031652719X</li>
+<li>Ebook formats: Kindle, epub</li>
+</ul>
+</section>
+<section id="metadata-can-be-structural." class="slide level2">
+<h2>Metadata Can Be Structural.</h2>
+<p>It can help you understand the different parts of the dataset and their relationship.</p>
+<p>For structured datasets, this is often column labels and their meanings.</p>
+<p><em>Broken Earth</em> Examples:</p>
+<ul>
+<li>Chapter titles</li>
+<li>Index</li>
+<li>Table of Contents</li>
+</ul>
+</section>
+<section id="metadata-has-standards-for-interoperability." class="slide level2">
+<h2>Metadata has standards for interoperability.</h2>
+<p><a href="http://dublincore.org/">Dublin Core</a> – 13 features common to digital data</p>
+<p><a href="https://www.ddialliance.org/">DDI: Data Documentation Initiative</a> – social, behavioral, and economic sciences</p>
+<p><a href="https://www.loc.gov/marc/">MARC: MAchine Readable Cataloging</a> – libraries, books &amp; media</p>
+</section></section>
+<section>
+<section id="the-data-analysis-cycle" class="title-slide slide level1">
+<h1>The Data Analysis Cycle</h1>
+
+</section>
+<section id="data-has-its-own-life-cycle" class="slide level2">
+<h2>Data has its own Life Cycle…</h2>
+<p><img data-src="img/data_lifecycle.png" /></p>
+<p><a href="https://old.dataone.org/data-life-cycle">dataone.org</a></p>
+</section>
+<section id="and-so-does-data-analysis." class="slide level2">
+<h2>… And So Does Data Analysis.</h2>
+<p><img data-src="img/dac_small.png" /></p>
+</section>
+<section id="there-are-many-data-analysis-cycles." class="slide level2">
+<h2>There are many Data Analysis Cycles.</h2>
+<p><img data-src="img/r_dac.png" /></p>
+<p><a href="https://r4ds.had.co.nz/explore-intro.html">R for Data Science</a></p>
+</section>
+<section class="slide level2">
+
+<p><img data-src="img/xkcd_data_error.png" /></p>
+<p><a href="https://xkcd.com/2239/">xkcd.com/2239</a></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
