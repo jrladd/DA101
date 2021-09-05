@@ -43,6 +43,7 @@ plugins:
   - jekyll-include-cache
 
 include: ["_pages"]
+exclude: ["slides/*.md"]
 
 defaults:
   # _posts
