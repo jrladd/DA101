@@ -62,7 +62,7 @@ For structured datasets, this is often column labels and their meanings.
 
 [dataone.org](https://old.dataone.org/data-life-cycle)
 
-## ... And So Does Data Analysis.
+## ... And So Does Analysis.
 
 ![](img/dac_small.png)
 
