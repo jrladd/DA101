@@ -12,3 +12,7 @@ permalink: /slides/
 [Metadata and the Data Analysis Cycle](/DA101/slides/metadata_and_da_cycle)
 
 [R Basics](/DA101/slides/rbasics)
+
+### Week 3:
+
+[Data Wrangling](/DA101/slides/wrangling)
