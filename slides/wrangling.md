@@ -20,6 +20,8 @@
 ## Tibbles are special Data Frames
 
 ```r
+library(tidyverse)
+
 library(nycflights13)
 
 flights
