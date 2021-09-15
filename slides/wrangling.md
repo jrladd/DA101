@@ -103,7 +103,7 @@ filter(df, is.na(x) | x > 1)
 
 Work through the exercise in the textbook, section 5.2.4
 
-## Arrange lets you reorder columns.
+## Arrange lets you sort rows.
 
 ```r
 arrange(flights, year, month, day)
