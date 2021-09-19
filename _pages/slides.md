@@ -16,3 +16,7 @@ permalink: /slides/
 ### Week 3:
 
 [Data Wrangling](/DA101/slides/wrangling)
+
+### Week 4
+
+[Visualizing Data](/DA101/slides/visualizing)
