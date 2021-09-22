@@ -162,3 +162,34 @@ ggplot(YourDataFrame, aes(x = FirstVariable, y = SecondVariable)) +
 
 Create a plot showing the distribution of weight in the diamonds dataset. Then show the distributions according to each color of diamond. Finally, change the size of the bins in each distribution to show more detail.
 
+# Ugly, Bad, or Wrong 
+
+---
+
+<img src="img/audible_bar.png" style="max-height:80vh" />
+
+---
+
+<img src="img/spreadsheet_viz.jpg" style="max-height:80vh" />
+
+---
+
+<img src="img/german_map.png" style="max-height:80vh" />
+
+---
+
+<img src="img/portuguese_elections.png" style="max-height:80vh" />
+
+---
+
+<img src="img/evaporation_color.jpg" style="max-height:80vh" />
+
+---
+
+<img src="img/violentcrime.jpg" style="max-height:80vh" />
+
+## More Examples of Bad Viz
+
+[viz.wtf](https://viz.wtf/)
+
+[r/dataisugly](https://www.reddit.com/r/dataisugly/)
