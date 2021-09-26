@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="DA 101, Dr. Ladd">
+  <title>Exploratory Data Analysis</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/solarized.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Exploratory Data Analysis</h1>
+  <p class="author">DA 101, Dr. Ladd</p>
+  <p class="date">Week 5</p>
+</section>
+
+<section>
+<section id="look-at-the-data" class="title-slide slide level1">
+<h1><em>Look</em> at the Data</h1>
+
+</section>
+<section id="john-tukey-1962" class="slide level2">
+<h2>John Tukey (1962)</h2>
+<figure>
+<img data-src="img/tukey.png" alt="John Tukey pioneered Exploratory Data Analysis starting in 1962 and again with a book in 1977." /><figcaption aria-hidden="true">John Tukey pioneered Exploratory Data Analysis starting in 1962 and again with a book in 1977.</figcaption>
+</figure>
+</section>
+<section id="exploratory-data-analysis-is-focused-on-the-location-variability-and-distribution-of-data." class="slide level2">
+<h2>Exploratory Data Analysis is focused on the <strong>location</strong>, <strong>variability</strong>, and <strong>distribution</strong> of data.</h2>
+</section></section>
+<section>
+<section id="location-what-is-the-datas-typical-value" class="title-slide slide level1">
+<h1>Location: What is the data’s “typical value”?</h1>
+
+</section>
+<section id="lets-imagine-a-variable-showing-the-heights-of-different-dogs." class="slide level2">
+<h2>Let’s imagine a variable showing the heights of different dogs.</h2>
+<figure>
+<img data-src="img/dogs1.gif" alt="The dog’s heights (in mm) are: 600, 470, 170, 430, and 300" /><figcaption aria-hidden="true">The dog’s heights (in mm) are: 600, 470, 170, 430, and 300</figcaption>
+</figure>
+</section>
+<section id="mean-is-the-sum-of-all-values-divided-by-the-number-of-values." class="slide level2">
+<h2>Mean is the sum of all values divided by the number of values.</h2>
+<p>AKA “average”</p>
+<p><img data-src="img/dogs2.gif" /></p>
+<p><span class="math inline">\(\dfrac{600+470+170+430+300}{5} = 394\)</span></p>
+</section>
+<section id="we-can-calculate-the-mean-easily-in-r." class="slide level2">
+<h2>We can calculate the mean easily in R.</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>dogs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">600</span>, <span class="dv">470</span>, <span class="dv">170</span>, <span class="dv">430</span>, <span class="dv">300</span>) <span class="co"># Put the dog heights into a vector</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="kw">mean</span>(dogs) <span class="co"># Calculate the mean</span></span></code></pre></div>
+</section>
+<section id="median-is-the-value-such-that-half-of-the-data-lies-above-and-below." class="slide level2">
+<h2>Median is the value such that half of the data lies above and below.</h2>
+<p>AKA “50th percentile”</p>
+<figure>
+<img data-src="img/dogs1.gif" alt="600, 470, 170, 430, 300" /><figcaption aria-hidden="true">600, 470, 170, 430, 300</figcaption>
+</figure>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">median</span>(dogs)</span></code></pre></div>
+</section>
+<section id="percentile-is-a-value-such-that-p-percent-of-the-data-lies-below." class="slide level2">
+<h2>Percentile is a value such that <em>P</em> percent of the data lies below.</h2>
+<p>AKA “quantile”</p>
+</section>
+<section id="the-25th-percentile-is-the-1st-quartile." class="slide level2">
+<h2>The 25th Percentile is the 1st Quartile.</h2>
+<figure>
+<img data-src="img/dogs1.gif" alt="600, 470, 170, 430, 300" /><figcaption aria-hidden="true">600, 470, 170, 430, 300</figcaption>
+</figure>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">summary</span>(dogs)</span></code></pre></div>
+</section>
+<section id="the-75th-percentile-is-the-3rd-quartile." class="slide level2">
+<h2>The 75th Percentile is the 3rd Quartile.</h2>
+<figure>
+<img data-src="img/dogs1.gif" alt="600, 470, 170, 430, 300" /><figcaption aria-hidden="true">600, 470, 170, 430, 300</figcaption>
+</figure>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">summary</span>(dogs)</span></code></pre></div>
+</section>
+<section id="the-median-is-the-2nd-quartile" class="slide level2">
+<h2>The median is the 2nd Quartile!!</h2>
+</section>
+<section id="an-outlier-is-a-data-value-thats-different-from-most-of-the-data." class="slide level2">
+<h2>An <strong>outlier</strong> is a data value that’s different from most of the data.</h2>
+<p>AKA “extreme value”</p>
+</section>
+<section id="a-robust-variable-is-not-sensitive-to-extreme-values." class="slide level2">
+<h2>A <strong>robust</strong> variable is not sensitive to extreme values.</h2>
+</section></section>
+<section>
+<section id="variability-is-the-data-tightly-clustered-or-spread-out" class="title-slide slide level1">
+<h1>Variability: Is the data tightly clustered or spread out?</h1>
+
+</section>
+<section id="the-interquartile-range-is-the-difference-between-the-1st-and-3rd-quartiles." class="slide level2">
+<h2>The <strong>interquartile range</strong> is the difference between the 1st and 3rd quartiles.</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">IQR</span>(dogs)</span></code></pre></div>
+</section>
+<section id="a-deviation-is-the-difference-between-an-actual-value-and-an-estimate-of-location-like-the-mean." class="slide level2">
+<h2>A <strong>deviation</strong> is the difference between an actual value and an estimate of location (like the mean).</h2>
+<p><img data-src="img/dogs3.gif" /></p>
+</section>
+<section id="the-variance-is-the-sum-of-the-squared-deviations-divided-by-the-number-of-values." class="slide level2">
+<h2>The <strong>variance</strong> is the sum of the squared deviations, divided by the number of values.</h2>
+<p><img data-src="img/dogs3.gif" /></p>
+<p><span class="math inline">\(\dfrac{206^2+76^2+(-224)^2+36^2+(-94)^2}{5} = 21,704\)</span></p>
+</section>
+<section id="the-standard-deviation-is-the-square-root-of-the-variance." class="slide level2">
+<h2>The <strong>standard deviation</strong> is the square root of the variance.</h2>
+<figure>
+<img data-src="img/dogs4.gif" alt="It gives us a “standard” way of knowing what is normal, or what is extra large/extra small." /><figcaption aria-hidden="true">It gives us a “standard” way of knowing what is normal, or what is extra large/extra small.</figcaption>
+</figure>
+<p>Rottweilers <em>are</em> tall, and dachsunds <em>are</em> short—compared to the standard deviation from the mean.</p>
+</section>
+<section id="now-calculate-the-variance-and-standard-deviations-in-r." class="slide level2">
+<h2>Now calculate the variance and standard deviations in R.</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">var</span>(dogs)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="kw">sd</span>(dogs)</span></code></pre></div>
+<p>Were these the results you expected?</p>
+</section>
+<section id="population-vs.-sample" class="slide level2">
+<h2>Population vs. Sample</h2>
+<p>When you have “N” data values:</p>
+<ul>
+<li>The Entire Population: divide by N when calculating variance (like we did)</li>
+<li>A Sample: divide by N-1 when calculating variance</li>
+</ul>
+<p>Sample variance: <span class="math inline">\(\dfrac{108,520}{4}=27,130\)</span><br />
+Sample standard deviation: <span class="math inline">\(\sqrt{27,130}=164\)</span></p>
+<p>Think of it as a “correction” when your data is only a sample. R does this by default!</p>
+</section>
+<section id="neither-the-mean-variance-nor-standard-deviation-are-robust.-they-are-all-very-sensitive-to-outliers" class="slide level2">
+<h2>Neither the mean, variance, nor standard deviation are <strong>robust</strong>. They are all very sensitive to outliers!</h2>
+</section></section>
+<section>
+<section id="distributions-how-many-of-each-value-are-there" class="title-slide slide level1">
+<h1>Distributions: How many of each value are there?</h1>
+
+</section>
+<section id="boxplots-show-distribution-based-on-the-median." class="slide level2">
+<h2>Boxplots show distribution based on the median.</h2>
+<figure>
+<img data-src="img/dogs_boxplot.png" alt="In the boxplot for “dogs,” we see the median (dark line), interquartile range (box), range (line or “whiskers”), and sometimes outliers (dots)." /><figcaption aria-hidden="true">In the boxplot for “dogs,” we see the median (dark line), interquartile range (box), range (line or “whiskers”), and sometimes outliers (dots).</figcaption>
+</figure>
+</section>
+<section id="histograms-show-distributions-based-on-frequency-counts." class="slide level2">
+<h2>Histograms show distributions based on frequency counts.</h2>
+<figure>
+<img data-src="img/mpg_hwy_hist.png" alt="The histogram for miles per gallon highway in the mpg dataset." /><figcaption aria-hidden="true">The histogram for miles per gallon highway in the mpg dataset.</figcaption>
+</figure>
+</section>
+<section id="the-normal-distribution-has-most-values-in-the-middle." class="slide level2">
+<h2>The normal distribution has most values in the middle.</h2>
+<figure>
+<img data-src="img/normal.png" alt="In a normal distribution, 95% of the values lie within 2 standard deviations of the mean." /><figcaption aria-hidden="true">In a normal distribution, 95% of the values lie within 2 standard deviations of the mean.</figcaption>
+</figure>
+<p>Be careful: normal distributions are assumed for many statistical analyses!</p>
+</section></section>
+<section>
+<section id="correlation-are-two-variables-related" class="title-slide slide level1">
+<h1>Correlation: Are two variables related?</h1>
+
+</section>
+<section id="location-variability-and-distribution-are-for-one-variable-at-a-time-univariate-analysis.-correlation-is-for-two-variables-bivariate-analysis." class="slide level2">
+<h2>Location, Variability, and Distribution are for one variable at a time (univariate analysis). Correlation is for <em>two</em> variables (bivariate analysis).</h2>
+</section>
+<section id="lets-look-at-displ-and-hwy-in-the-mpg-dataset" class="slide level2">
+<h2>Let’s look at <code>displ</code> and <code>hwy</code> in the <code>mpg</code> dataset</h2>
+<figure>
+<img data-src="img/mpg_scatter.png" alt="Does the size of the engine affect fuel efficiency?" /><figcaption aria-hidden="true">Does the size of the engine affect fuel efficiency?</figcaption>
+</figure>
+</section>
+<section id="correlation-coefficient-measures-the-extent-to-which-two-variables-are-related-on-a-scale-of--1-to-1." class="slide level2">
+<h2>Correlation coefficient measures the extent to which two variables are related, on a scale of -1 to 1.</h2>
+<p>Pearson’s correlation coefficient multiplies the deviations from the mean for two variables, and divides by the product of the standard deviation.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">cor</span>(mpg<span class="op">$</span>displ,mpg<span class="op">$</span>hwy)</span></code></pre></div>
+</section></section>
+<section>
+<section id="dont-be-fooled" class="title-slide slide level1">
+<h1>Don’t be fooled!</h1>
+
+</section>
+<section id="always-use-summary-statistics-and-visualization-together." class="slide level2">
+<h2>Always use summary statistics and visualization <em>together</em>.</h2>
+<p><img data-src="img/unstructured_quartet.png" /></p>
+</section>
+<section id="if-we-have-the-same-mean-standard-deviation-and-correlation-we-might-expect-the-data-sets-to-be-similar" class="slide level2">
+<h2>If we have the same <strong>mean</strong>, <strong>standard deviation</strong>, and <strong>correlation</strong> we might expect the data sets to be similar…</h2>
+</section>
+<section id="but-they-could-very-clearly-and-visually-distinct" class="slide level2">
+<h2>But they could very clearly and visually <strong>distinct</strong>!</h2>
+<p><img data-src="img/anscombes_quartet.png" /></p>
+</section>
+<section id="data-challenge" class="slide level2">
+<h2>Data Challenge</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">install.packages</span>(“datasauRus”)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="kw">library</span>(datasauRus)</span></code></pre></div>
+<p>Use <code>dplyr</code> to find the summary statistics for each dataset in the <code>datasaurus_dozen</code>.</p>
+<ul>
+<li>Find mean, standard deviation, and correlation for both x and y of each dataset.</li>
+<li>Wrap your functions in <code>round()</code> to round to 3 decimal places.</li>
+</ul>
+<p>When you’re done, try making scatter plots!</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

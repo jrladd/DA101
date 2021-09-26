@@ -20,3 +20,7 @@ permalink: /slides/
 ### Week 4
 
 [Visualizing Data](/DA101/slides/visualizing)
+
+### Week 5
+
+[Exploratory Data Analysis](/DA101/slides/eda)
