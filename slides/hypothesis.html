@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="DA 101, Dr. Ladd">
+  <title>Hypothesis Testing</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/solarized.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Hypothesis Testing</h1>
+  <p class="author">DA 101, Dr. Ladd</p>
+  <p class="date">Week 6</p>
+</section>
+
+<section>
+<section id="why-do-we-need-a-hypothesis" class="title-slide slide level1">
+<h1>Why Do We Need a Hypothesis?</h1>
+
+</section>
+<section id="humans-underestimate-randomness." class="slide level2">
+<h2>Humans underestimate randomness.</h2>
+<p><img data-src="img/coinflip.jpeg" /></p>
+</section>
+<section id="hypothesis-tests-protect-researchers-from-being-fooled-by-random-chance." class="slide level2">
+<h2>Hypothesis tests protect researchers from being fooled by random chance.</h2>
+</section></section>
+<section>
+<section id="sample-vs.-population" class="title-slide slide level1">
+<h1>Sample vs. Population</h1>
+
+</section>
+<section id="a-sample-is-the-data-we-actually-have-some-subset-of-all-possible-data." class="slide level2">
+<h2>A <strong>sample</strong> is the data we actually have, some subset of all possible data.</h2>
+</section>
+<section id="the-population-is-the-full-data-the-entire-thing.-its-usually-impossible-to-collect-it-all." class="slide level2">
+<h2>The <strong>population</strong> is the full data, the entire thing. (It’s usually impossible to collect it all.)</h2>
+</section>
+<section id="hypothesis-tests-help-us-to-know-if-the-observed-differences-in-the-sample-are-the-result-of-random-chance." class="slide level2">
+<h2>Hypothesis tests help us to know if the observed differences in the sample are the result of random chance.</h2>
+</section></section>
+<section>
+<section id="the-null-hypothesis-and-the-alternative-hypothesis" class="title-slide slide level1">
+<h1>The Null Hypothesis and the Alternative Hypothesis</h1>
+
+</section>
+<section id="the-null-hypothesis-is-a-baseline-assumption-that-the-result-is-due-to-chance." class="slide level2">
+<h2>The <strong>Null Hypothesis</strong> is a baseline assumption that the result is due to chance.</h2>
+</section>
+<section id="the-null-hypothesis-assumes-equality." class="slide level2">
+<h2>The Null Hypothesis assumes <em>equality</em>.</h2>
+<p>Consider two sample groups, A and B. (Such as the male and female groups of your alcohol use data.)</p>
+<p>The null hypothesis would assume that the means of A and B are <em>equal</em>, that there is no difference between them, and that any observed difference we see is the result of randomness.</p>
+</section>
+<section id="in-a-hypothesis-test-we-try-to-prove-the-null-hypothesis-wrong." class="slide level2">
+<h2>In a hypothesis test, we try to prove the null hypothesis <em>wrong</em>.</h2>
+<p>We attempt to disprove the null hypothesis by showing that the observed data <strong>isn’t</strong> the result of randomness.</p>
+</section>
+<section id="the-alternative-hypothesis-accounts-for-all-possibilities-that-arent-the-null-hypothesis." class="slide level2">
+<h2>The <strong>Alternative Hypothesis</strong> accounts for all possibilities that <em>aren’t</em> the Null Hypothesis.</h2>
+<p>If there’s a null hypothesis, there has to be an alternative hypothesis.</p>
+<p>If the null hypothesis is that A and B are equal, then the alternative hypothesis would be that A and B are <em>not</em> equal (either smaller or bigger).</p>
+</section>
+<section id="the-alternative-hypothesis-can-be-one--or-two-tailed." class="slide level2">
+<h2>The Alternative Hypothesis can be One- or Two-Tailed.</h2>
+<ul>
+<li><p>One-tailed: We only care about a non-equal result in one direction, i.e. if A &gt; B but <strong>not</strong> if A &lt; B.</p></li>
+<li><p>Two-tailed: We care about differences in both directions, i.e. A != B but could be larger or smaller.</p></li>
+</ul>
+<p>Different research questions lead to different alternative hypotheses.</p>
+</section></section>
+<section>
+<section id="lets-consider-some-examples" class="title-slide slide level1">
+<h1>Let’s consider some examples</h1>
+
+</section>
+<section id="what-are-the-null-and-alternative-hypotheses" class="slide level2">
+<h2>What are the Null and Alternative Hypotheses?</h2>
+<ol type="1">
+<li><p>Is the median house price in Granville larger than the median price in Newark?</p></li>
+<li><p>Is the mean number of mountain lions per 100 km^2 equal in North and South America?</p></li>
+<li><p>NHANES reports the average starting age of smoking is 19. Is this correct, or is the true mean lower than this?</p></li>
+</ol>
+</section></section>
+<section>
+<section id="interpreting-a-hypothesis-test" class="title-slide slide level1">
+<h1>Interpreting a Hypothesis Test</h1>
+
+</section>
+<section id="lets-walk-through-an-example" class="slide level2">
+<h2>Let’s walk through an example</h2>
+<p>Say you have two web pages, Page A and Page B, and you’ve measured the amount of time internet users spend on each page. You’re trying to decide whether to replace Page A with Page B.</p>
+</section>
+<section id="first-look-at-the-difference" class="slide level2">
+<h2>First look at the difference:</h2>
+<p><img src="img/sessiontimes.png" style="max-height:60vh" /></p>
+</section>
+<section id="setting-up-the-test" class="slide level2">
+<h2>Setting up the test</h2>
+<p>The Null Hypothesis is that:</p>
+<p><code>mean(A) = mean(B)</code></p>
+<p>The Alternative Hypothesis is that:</p>
+<p><code>mean(B) &gt; mean(A)</code> (one-tailed)</p>
+</section>
+<section id="lets-imagine-reshuffling-the-data." class="slide level2">
+<h2>Let’s imagine reshuffling the data.</h2>
+<p>We have two clear groups: the people who saw Page A and the ones who saw Page B. But we could reshuffle this data a thousand times in a thousand different configurations, where the session times are separated into equally sized but random groups.</p>
+<p>In the end we’d have a <em>distribution</em> of how much the means differ among a thousand random groups.</p>
+</section>
+<section id="we-can-compare-our-observed-difference-to-that-distribution." class="slide level2">
+<h2>We can compare our <strong>observed difference</strong> to that distribution.</h2>
+<p><img src="img/resampling.png" style="max-height:55vh" /></p>
+</section>
+<section id="in-this-case-we-care-about-how-often-the-random-differences-were-greater-than-the-observed-difference." class="slide level2">
+<h2>In this case, we care about how often the random differences were greater than the observed difference.</h2>
+<p>I.e., how often the values were to the right of the dotted line.</p>
+<p>In this case, that was about 12% percent of the time. That’s a lot! And that means that this observed difference isn’t all that unusual.</p>
+</section></section>
+<section>
+<section id="statistical-significance-and-the-p-value" class="title-slide slide level1">
+<h1>Statistical Significance and the P-value</h1>
+
+</section>
+<section id="we-could-keep-looking-at-graphs-like-these-but-thats-imprecise." class="slide level2">
+<h2>We could keep looking at graphs like these, but that’s imprecise.</h2>
+<p>Instead, we can measure the probability of obtaining results as unusual as the observed result.</p>
+<p>This probability is called the p-value!</p>
+</section>
+<section id="the-p-values-formal-definition" class="slide level2">
+<h2>The p-value’s formal definition:</h2>
+<p>Given a chance model that embodies the null hypothesis, the p-value is the probability of obtaining results as unusual or extreme as the observed result.</p>
+<p>In our example, our 12% was a p-value of .12!</p>
+</section>
+<section id="is-a-common-alpha-or-pre-determined-cutoff-for-significance." class="slide level2">
+<h2>.05 is a common <em>alpha</em>, or pre-determined cutoff for significance.</h2>
+<p>If the p-value is lower than .05 (5%), we can reject the null hypothesis.</p>
+<p>If the p-value is higher than .05 (5%), we fail to reject the null hypothesis and our result could be random.</p>
+<p>This is just a rule of thumb!</p>
+</section>
+<section id="t-tests-let-you-calculate-a-p-value-for-a-difference-in-means." class="slide level2">
+<h2>T-Tests let you calculate a p-value for a difference in means.</h2>
+<p>In our example of two groups in our data, we could test whether their difference in means is significant using a <strong>t-test</strong>.</p>
+<p>A t-test estimates the random reshuffled distributions based on a series of assumptions about what that distribution should look like. It calculates a p-value based on that “t-distribution.”</p>
+<p>Different statistical tests calculate p-values for other kinds of differences.</p>
+</section>
+<section id="all-other-things-being-equal" class="slide level2">
+<h2>All other things being equal…</h2>
+<ul>
+<li>The observed difference increasing will decrease the p-value (more likely to find significance)</li>
+<li>The sample size increasing will decrease the p-value (more likely to find significance)</li>
+<li>The variability increasing will increase the p-value (less likely to find significance)</li>
+</ul>
+</section>
+<section id="dont-only-consider-the-p-value" class="slide level2">
+<h2>Don’t <em>only</em> consider the p-value!</h2>
+<p>Consider results that are:</p>
+<ul>
+<li><strong>Statistically significant and useful</strong></li>
+<li>Statistically significant and not useful</li>
+<li>Statistically insignificant and useful</li>
+<li>Marginally significant and useful (practically significant)</li>
+</ul>
+</section>
+<section id="error-in-hypothesis-testing" class="slide level2">
+<h2>Error in Hypothesis Testing</h2>
+<p><img data-src="img/errorht.png" /></p>
+<ul>
+<li><p>Type I Error (alpha-error) is rejecting the null hypothesis when it is true.</p></li>
+<li><p>Type II Error (beta-error) is failing to reject the null hypothesis when it is false.</p></li>
+</ul>
+<p>Misreading or overemphasizing the p-value can lead us to error!</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
