@@ -24,3 +24,7 @@ permalink: /slides/
 ### Week 5
 
 [Exploratory Data Analysis](/DA101/slides/eda)
+
+### Week 6
+
+[Hypothesis Testing](/DA101/slides/hypothesis)
