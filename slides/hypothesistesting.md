@@ -114,6 +114,12 @@ If the p-value is higher than .05 (5%), we fail to reject the null hypothesis an
 
 This is just a rule of thumb!
 
+---
+
+![xkcd.com/1478](img/p_values.png)
+
+---
+
 ## T-Tests let you calculate a p-value for a difference in means.
 
 In our example of two groups in our data, we could test whether their difference in means is significant using a **t-test**.
