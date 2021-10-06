@@ -24,7 +24,7 @@ Sept. 13-17|Wrangling Data|Garlic Mustard II|[Against Cleaning](http://curatingm
 Sept. 20-24|Visualizing Data|Code Glossary I|[Ugly, Bad, and Wrong Figures](https://clauswilke.com/dataviz/introduction.html)
 |**Module 2: Describe**|
 Sept. 27--Oct. 1|Descriptive Analytics: distributions, summary statistics, hypothesis testing|Substance Use I|[An unprecedented Nintendo leak turns into a moral dilemma for archivists](https://www.theverge.com/2020/7/30/21347074/nintendo-gigaleak-controversy-history-preservation-archives)
-Oct. 4-8|Descriptive Analytics: hypothesis testing|Substance Use II|[Stop Misusing P-Values](https://fivethirtyeight.com/features/statisticians-found-one-thing-they-can-agree-on-its-time-to-stop-misusing-p-values/)
+Oct. 4-8|Descriptive Analytics: hypothesis testing|Substance Use II|[Stop Misusing P-Values](https://fivethirtyeight.com/features/statisticians-found-one-thing-they-can-agree-on-its-time-to-stop-misusing-p-values/); [Science Isn't Broken](https://fivethirtyeight.com/features/science-isnt-broken/)
 Oct. 11-15|Ethical Data Analysis: Understanding Bias|Ethics|[Systemic Algorithmic Harms](https://points.datasociety.net/systemic-algorithmic-harms-e00f99e72c42)
 Oct. 20-22|Special Topics: Maps & Geographic Data|No Lab! (Fall Break)|
 |**Module 3: Predict**|
