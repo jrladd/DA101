@@ -31,4 +31,6 @@ permalink: /slides/
 
 ### Week 7
 
+[Debugging](DA101/slides/debugging)
+
 [Ethics, Bias, and Diversity](/DA101/slides/ethics)
