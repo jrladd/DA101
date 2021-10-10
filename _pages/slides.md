@@ -28,3 +28,7 @@ permalink: /slides/
 ### Week 6
 
 [Hypothesis Testing](/DA101/slides/hypothesis)
+
+### Week 7
+
+[Ethics, Bias, and Diversity](/DA101/slides/ethics)
