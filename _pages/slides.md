@@ -34,3 +34,7 @@ permalink: /slides/
 [Debugging](/DA101/slides/debugging)
 
 [Ethics, Bias, and Diversity](/DA101/slides/ethics)
+
+### Week 8
+
+[Mapping and Spatial Data](/DA101/slides/mapping)
