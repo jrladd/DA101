@@ -27,6 +27,8 @@ You need a "bounding box" to define the edges of your map.
 
 ![](img/boundingbox.png)
 
+Find bbox coordinates online at [bboxfinder.com](http://bboxfinder.com/).
+
 ## Maps are awesome. Spatial analysis is hard.
 
 Plotting points in space is only the first step.
