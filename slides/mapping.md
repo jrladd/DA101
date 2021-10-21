@@ -194,3 +194,79 @@ Make a map of Denison University, and label a building or location on campus tha
 # Hint: the "annotate" layer of ggmap looks like this:
 annotate('text', x=-82.523211, y=40.071658, label='I teach here <3', colour=I('white'), size=4)
 ```
+
+## Solution 1
+
+![](img/mappingsolution1.png)
+
+## Alternative Solution 1
+
+![](img/mappingaltsolution1.png)
+
+## Solution 2
+
+![](img/mappingsolution2.png)
+
+## Solution 3
+
+![](img/mappingsolution3.png)
+
+# Chloropleth Maps
+
+## You see these everywhere!
+
+![The in-progress NYTimes electoral map from 2008.](img/electoral.jpg)
+
+## You don't even need ggmap for this. Regular ggplot will do. Let's make one together.
+
+## Get some global GDP data from gapminder.
+
+```r
+# Get gapminder world economy data for 2007
+gap2007=gapminder %>%
+  filter(year==2007) %>%
+  rename(region=country)
+```
+
+## Chloropleth maps are made of polygons. Let's use rworldmap to get our polygons.
+
+```r
+# Get world polygons
+world <- map_data(map="world")
+
+# Now we can "join" this to our gapminder data:
+world2 <- left_join(world, gap2007, by="region")
+```
+
+## Finally we can write our ggplot code using `geom_polygon()`.
+
+```r
+# Chloropleth world GDP map
+ggplot(world2, aes(long, lat, group = group))+
+  geom_polygon(aes(fill = gdpPercap), col="white")+
+  scale_fill_viridis_c(option = "C") +
+  theme_void()
+```
+
+## And voila!
+
+![](img/chloropleth1.png)
+
+## You try it!
+
+**Challenge**: Make a similar map for urban population US states.
+
+Here's some code to get you started:
+
+```r
+# Get US states polygons
+states <- map_data(map="state")
+# Lowercase crime data
+USArrests$region = tolower(rownames(USArrests))
+```
+
+What do you need to do next? Think about joining data before you try ggplot!
+
+## Here's what you're aiming for:
+
+![](img/chloropleth2.png)

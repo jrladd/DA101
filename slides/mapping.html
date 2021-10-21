@@ -268,6 +268,77 @@
 <p>Make a map of Denison University, and label a building or location on campus that you enjoy, with text that relates to why it’s special to you - or why you’re thankful for it.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: the &quot;annotate&quot; layer of ggmap looks like this:</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate</span>(<span class="st">&#39;text&#39;</span>, <span class="at">x=</span><span class="sc">-</span><span class="fl">82.523211</span>, <span class="at">y=</span><span class="fl">40.071658</span>, <span class="at">label=</span><span class="st">&#39;I teach here &lt;3&#39;</span>, <span class="at">colour=</span><span class="fu">I</span>(<span class="st">&#39;white&#39;</span>), <span class="at">size=</span><span class="dv">4</span>)</span></code></pre></div>
+</section>
+<section id="solution-1" class="slide level2">
+<h2>Solution 1</h2>
+<p><img data-src="img/mappingsolution1.png" /></p>
+</section>
+<section id="alternative-solution-1" class="slide level2">
+<h2>Alternative Solution 1</h2>
+<p><img data-src="img/mappingaltsolution1.png" /></p>
+</section>
+<section id="solution-2" class="slide level2">
+<h2>Solution 2</h2>
+<p><img data-src="img/mappingsolution2.png" /></p>
+</section>
+<section id="solution-3" class="slide level2">
+<h2>Solution 3</h2>
+<p><img data-src="img/mappingsolution3.png" /></p>
+</section></section>
+<section>
+<section id="chloropleth-maps" class="title-slide slide level1">
+<h1>Chloropleth Maps</h1>
+
+</section>
+<section id="you-see-these-everywhere" class="slide level2">
+<h2>You see these everywhere!</h2>
+<figure>
+<img data-src="img/electoral.jpg" alt="The in-progress NYTimes electoral map from 2008." /><figcaption aria-hidden="true">The in-progress NYTimes electoral map from 2008.</figcaption>
+</figure>
+</section>
+<section id="you-dont-even-need-ggmap-for-this.-regular-ggplot-will-do.-lets-make-one-together." class="slide level2">
+<h2>You don’t even need ggmap for this. Regular ggplot will do. Let’s make one together.</h2>
+</section>
+<section id="get-some-global-gdp-data-from-gapminder." class="slide level2">
+<h2>Get some global GDP data from gapminder.</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get gapminder world economy data for 2007</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>gap2007<span class="ot">=</span>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">region=</span>country)</span></code></pre></div>
+</section>
+<section id="chloropleth-maps-are-made-of-polygons.-lets-use-rworldmap-to-get-our-polygons." class="slide level2">
+<h2>Chloropleth maps are made of polygons. Let’s use rworldmap to get our polygons.</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get world polygons</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>world <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="at">map=</span><span class="st">&quot;world&quot;</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can &quot;join&quot; this to our gapminder data:</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>world2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(world, gap2007, <span class="at">by=</span><span class="st">&quot;region&quot;</span>)</span></code></pre></div>
+</section>
+<section id="finally-we-can-write-our-ggplot-code-using-geom_polygon." class="slide level2">
+<h2>Finally we can write our ggplot code using <code>geom_polygon()</code>.</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chloropleth world GDP map</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world2, <span class="fu">aes</span>(long, lat, <span class="at">group =</span> group))<span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">fill =</span> gdpPercap), <span class="at">col=</span><span class="st">&quot;white&quot;</span>)<span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">&quot;C&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+</section>
+<section id="and-voila" class="slide level2">
+<h2>And voila!</h2>
+<p><img data-src="img/chloropleth1.png" /></p>
+</section>
+<section id="you-try-it" class="slide level2">
+<h2>You try it!</h2>
+<p><strong>Challenge</strong>: Make a similar map for urban population US states.</p>
+<p>Here’s some code to get you started:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get US states polygons</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>states <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="at">map=</span><span class="st">&quot;state&quot;</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Lowercase crime data</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>USArrests<span class="sc">$</span>region <span class="ot">=</span> <span class="fu">tolower</span>(<span class="fu">rownames</span>(USArrests))</span></code></pre></div>
+<p>What do you need to do next? Think about joining data before you try ggplot!</p>
+</section>
+<section id="heres-what-youre-aiming-for" class="slide level2">
+<h2>Here’s what you’re aiming for:</h2>
+<p><img data-src="img/chloropleth2.png" /></p>
 </section></section>
     </div>
   </div>
