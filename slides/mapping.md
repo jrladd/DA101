@@ -254,7 +254,7 @@ ggplot(world2, aes(long, lat, group = group))+
 
 ## You try it!
 
-**Challenge**: Make a similar map for urban population US states.
+**Challenge**: Make a similar map for the urban population of US states.
 
 Here's some code to get you started:
 
