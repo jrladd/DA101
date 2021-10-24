@@ -16,17 +16,17 @@ mpg_filtered <- filter(mpg, class=="minivan"|class=="pickup")
 t.test(hwy~class,mpg_filtered)
 ```
 
-## How do we test the mean of a single group?
+## How do we test the mean of one variable?
 
 The one-sample t-test:
 
 ```r
-# Run a t-test with just one variable or group
-minivans <- filter(mpg, class=="minivan")
-
-# Then run the test
-t.test(minivans$hwy)
+# Run the test to see if the mean of hwy
+# is greater than 0.
+t.test(mpg$hwy, mu=0, alternative="greater")
 ```
+
+We can set the default mean (`mu`) to *any value*. Remember that the variable **must** be normally distributed.
 
 ## How do we know if a variable is normally distributed?
 
@@ -54,9 +54,27 @@ ggplot(,aes(v1)) +
 shapiro.test(v1)
 ```
 
-How would you make a variable with 200 values and a mean of 23?
+# You Try It!
 
-## Understanding Correlation
+## Set Up
+
+Install and load the `palmerpenguins` dataset. Then create a filtered dataset of only the Adelie penguins.
+
+Make sure you've got `tidyverse` imported, too.
+
+Ask yourself: what test or function would you run? How would you run it?
+
+## Challenges
+
+1. Are the flipper lengths of Adelie penguins normally distributed?
+
+2. Are the flipper lengths of Adelie penguins significantly less than 190mm?
+
+3. Is there a significant difference in the flipper length of Adelie penguins vs. Gentoo penguins?
+
+4. Let's create a normally distributed variable with roughly the same mean and standard deviation as the flipper length of Adelie penguins, but with twice the number of observations.
+
+# Understanding Correlation
 
 ## Let's think about how we look at the relationship of two variables.
 
@@ -78,4 +96,10 @@ cor.test(mpg$displ,mpg$cty)
 
 Now we know the variables are correlated, and we know that this correlation is statistically significant. But we can learn more about the *nature* of the relationship...
 
-# Understanding relationships with Linear Regression
+## But first, more challenges!
+
+1. What is the correlation coefficient between bill length and flipper length in the `penguins` dataset?
+
+2. Is this correlation statistically significant?
+
+3. Let's verify our result visually, with a scatter plot! Bonus: How would we see if species matters? And how would we visualize the trend?
