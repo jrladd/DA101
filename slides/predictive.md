@@ -103,3 +103,218 @@ Now we know the variables are correlated, and we know that this correlation is s
 2. Is this correlation statistically significant?
 
 3. Let's verify our result visually, with a scatter plot! Bonus: How would we see if species matters? And how would we visualize the trend?
+
+# Linear Regression
+
+## We can use correlation coefficients and correlation tests to learn the *strength* of a correlation, but how do we learn the *nature* of a correlation?
+
+## Questions we might want to answer with regression:
+
+- Does x influence y?
+- Is crop growth rate improved by fertilizer?
+- Do taller sprinters run faster?
+
+## Linear prediction models, also called regression models, help us to answer these kind of questions, which explore *relationships*.
+
+## A **prediction model** analyzes data that the researcher (*you!*) supplies, and calculates numerical coefficients to help with prediction.
+
+## Linear regression is just one type of model!
+
+# How does linear regression work?
+
+## For many kinds of data, it is possible to "fit" a line to a set of data points. 
+
+## That line represents the connection between an ________ (x-axis) and a ________ (y-axis) variable.
+
+## And in this case, the ______________ variable is a function of the ________________ variable. 
+
+## To define independent and dependent variables, you need to *use your human brain*.
+
+Come up with a *rationale* for why you think they would be related.
+
+## This does *not* mean that x causes y! A regression can't show that.
+
+It's *not* a good idea to just try to regress any set of variables together.
+
+**Correlation does not mean causation!!**
+
+# Calculating simple linear regression
+
+## $Y=mX+b$
+
+Can also be written as: $Y=b_{1}X+b_{0}$
+
+## $Y=mX+b$
+
+$Y$ is your independent variable.
+
+$X$ is your dependent variable.
+
+## $Y=mX+b$
+
+Two coefficients:
+
+$m$ (or $b_{1}$) describes the *slope* of the line (and its direction).
+
+$b$ (or $b_{0}$) describes the height of the line when $X$ is 0. This is called the y-intercept or simply the intercept.
+
+## We can provide 2 numeric variables ($X$ and $Y$), and R will calculate the $m$ and $b$ values.
+
+This is what it means to "fit" a linear model.
+
+## In theory, if you know any $m$ and $b$, you can use any new X value to *predict* a Y value. Wow!
+
+# Linear regression in R
+
+## Let's use `gapminder` data
+
+```r
+library(tidyverse) # Tidyverse gets us dplyr and ggplot
+library(gapminder)
+
+# Take a quick look at gapminder
+head(gapminder)
+```
+
+## Always start with exploratory analysis.
+
+Do you have good reason to believe that a linear regression or predictive model would help? Is there are a relationship between variables that's worth learning about?
+
+```r
+# Let's make a scatter plot of life expectancy and GDP,
+# but only in the US over different years.
+
+usOnly <- gapminder %>% filter(country=="United States")
+ggplot(usOnly, aes(gdpPercap, lifeExp)) + 
+  geom_point()
+```
+
+## It looks like there might be a linear relationship for the US!
+
+We can see a general trend: as GDP goes up, so does life expectancy. Now we're ready to try modeling this relationship.
+
+## For statistical modeling in R, we can use `tidymodels`.
+
+```r
+# In the console only:
+install.packages("tidymodels")
+
+# In your .R file or RMarkdown:
+library(tidymodels)
+```
+
+## First we choose our model, then we fit it to our data, then we can summarize or predict.
+
+```r
+# Save everything in a variable called "regression"
+regression <- linear_reg() %>% # Choose the linear regression model
+  set_engine("lm") %>% # Set linear model as our engine
+  fit(lifeExp~gdpPercap, data = usOnly) # Fit to our data
+```
+
+## We have several ways of looking at the results
+
+```r
+tidy(regression) # See the slope and intercept (m and b)
+glance(regression) # See R2 and other important stats
+
+# This is the main one:
+summary(regression$fit) # See a summary of everything
+```
+
+# Interpreting Linear Regression
+
+## Running summary() throws a lot at you! Let's go through it step-by-step.
+
+## "Call" shows the formula you used.
+
+```
+Call:
+stats::lm(formula = lifeExp ~ gdpPercap, data = data)
+```
+
+This would help if you didn't have the original code.
+
+## Residuals are the differences between the actual observed values and the ones the model predicted.
+
+```
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-82.754  -7.758   2.176   8.225  18.426 
+```
+
+<small>Think of these as the "errors" that the modeling method produced. If the residuals are symmetrically distributed with the median close to zero, the model may fit the data well.</small>
+
+## Coefficients show an estimate for the intercept ($b$) and the slope ($m$).
+
+```
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 5.396e+01  3.150e-01  171.29   <2e-16 ***
+gdpPercap   7.649e-04  2.579e-05   29.66   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
+
+We get estimates and a p-value (`Pr(>|t|)`) for each coefficient. The coefficients tell us the *nature* of the relationship and whether it's "significant."
+
+---
+
+With a slope of `7.649e-04` and a low p-value, this linear regression provides evidence that as GDP increases, life expectancy also increases!
+
+For every additional unit of GDP, the expected life expectancy increases by 0.0007649. (Not very much!)
+
+*Be careful not to imply that there is a direct causal link, especially without more evidence or studies.*
+
+## $R^{2}$ shows the amount (proportion) of variation in $Y$ that is accounted for by $X$.
+
+```
+Multiple R-squared:  0.3407,	Adjusted R-squared:  0.3403 
+F-statistic: 879.6 on 1 and 1702 DF,  p-value: < 2.2e-16
+```
+
+$R^{2}$ ranges from 0 to 1. If it were 1, the variables would make a straight line. If it were 0, the x variable wouldn't predict the y variable at all.
+
+---
+
+In this example, $R^{2}=0.3407$, so GDP accounts for about 34% of the variation in life expectancy.
+
+There's no rule for what makes an $R^{2}$ "good." Consider the context and purpose of your analysis!
+
+In an analysis of ecology or human behavior (very unpredictable) an R2 of 0.20 or 0.30, might be considered good. In an analysis predicting mechanical repairs, or recovery from medical procedures, an R2 of 0.60 or 0.70 might be considered very poor. 
+
+## The $R^{2}$ is also accompanied by a p-value.
+
+```
+Multiple R-squared:  0.3407,	Adjusted R-squared:  0.3403 
+F-statistic: 879.6 on 1 and 1702 DF,  p-value: < 2.2e-16
+```
+
+This is a significance test for the probability of observing a result this extreme, assuming the true $R^{2}$ is 0. Here the p-value is very small: there's a *statistically significant* relationship.
+
+# Visualize and Validate Your Model
+
+## Look at the original data, but with a line of best fit.
+
+Also called a "regression line."
+
+```r
+ggplot(gapminder, aes(x=gdpPercap,y=lifeExp)) +
+  geom_point() +
+  stat_smooth(method="lm")
+```
+
+## Create a Q-Q plot of the residuals.
+
+The quantile-quantile plot shows how closely your residuals follow a normal distribution.
+
+```r
+res <- rstandard(regression$fit) # First get the residuals
+
+# Then make the plot
+ggplot(,aes(sample=res)) +
+  geom_qq() +
+  geom_qq_line()
+```
+
+You're looking to see if the dots stray from the line.
