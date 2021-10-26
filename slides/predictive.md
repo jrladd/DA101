@@ -106,7 +106,7 @@ Now we know the variables are correlated, and we know that this correlation is s
 
 # Linear Regression
 
-## We can use correlation coefficients and correlation tests to learn the *strength* of a correlation, but how do we learn the *nature* of a correlation?
+## We can use correlation coefficients and correlation tests to learn the *strength* of a relationship, but how do we learn the *nature* of a relationship?
 
 ## Questions we might want to answer with regression:
 
@@ -166,32 +166,31 @@ This is what it means to "fit" a linear model.
 
 # Linear regression in R
 
-## Let's use `gapminder` data
-
-```r
-library(tidyverse) # Tidyverse gets us dplyr and ggplot
-library(gapminder)
-
-# Take a quick look at gapminder
-head(gapminder)
-```
-
 ## Always start with exploratory analysis.
 
-Do you have good reason to believe that a linear regression or predictive model would help? Is there are a relationship between variables that's worth learning about?
+Do you have good reason to believe that a linear regression or predictive model would help? Is there a relationship between variables that's worth learning about?
 
 ```r
-# Let's make a scatter plot of life expectancy and GDP,
-# but only in the US over different years.
+library(tidyverse) # Gets us both dplyr and ggplot!
 
-usOnly <- gapminder %>% filter(country=="United States")
-ggplot(usOnly, aes(gdpPercap, lifeExp)) + 
+# Let's make a scatter plot of engine displacement and
+# city fuel efficiency, in the mpg dataset.
+
+ggplot(mpg, aes(displ, cty)) + 
   geom_point()
 ```
 
-## It looks like there might be a linear relationship for the US!
+---
 
-We can see a general trend: as GDP goes up, so does life expectancy. Now we're ready to try modeling this relationship.
+![What do you think?](img/mpg_scatter_regression.png)
+
+## It looks like there might be a linear relationship!
+
+We can see a general trend: as engine size goes up, fuel efficiency goes down. Now we're ready to try modeling this relationship.
+
+## Beware!
+
+![xkcd.com/1725](img/xkcd_regression.png)
 
 ## For statistical modeling in R, we can use `tidymodels`.
 
@@ -209,7 +208,7 @@ library(tidymodels)
 # Save everything in a variable called "regression"
 regression <- linear_reg() %>% # Choose the linear regression model
   set_engine("lm") %>% # Set linear model as our engine
-  fit(lifeExp~gdpPercap, data = usOnly) # Fit to our data
+  fit(cty~displ, data = mpg) # Fit to our data
 ```
 
 ## We have several ways of looking at the results
@@ -230,7 +229,7 @@ summary(regression$fit) # See a summary of everything
 
 ```
 Call:
-stats::lm(formula = lifeExp ~ gdpPercap, data = data)
+stats::lm(formula = cty ~ displ, data = data)
 ```
 
 This would help if you didn't have the original code.
@@ -240,7 +239,7 @@ This would help if you didn't have the original code.
 ```
 Residuals:
     Min      1Q  Median      3Q     Max 
--82.754  -7.758   2.176   8.225  18.426 
+-6.3109 -1.4695 -0.2566  1.1087 14.0064 
 ```
 
 <small>Think of these as the "errors" that the modeling method produced. If the residuals are symmetrically distributed with the median close to zero, the model may fit the data well.</small>
@@ -249,9 +248,9 @@ Residuals:
 
 ```
 Coefficients:
-             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 5.396e+01  3.150e-01  171.29   <2e-16 ***
-gdpPercap   7.649e-04  2.579e-05   29.66   <2e-16 ***
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  25.9915     0.4821   53.91   <2e-16 ***
+displ        -2.6305     0.1302  -20.20   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 ```
@@ -260,24 +259,24 @@ We get estimates and a p-value (`Pr(>|t|)`) for each coefficient. The coefficien
 
 ---
 
-With a slope of `7.649e-04` and a low p-value, this linear regression provides evidence that as GDP increases, life expectancy also increases!
+With a slope of `-2.6305` and a very low p-value, this linear regression provides evidence that as engine displacment increases, fuel efficiency decreases!
 
-For every additional unit of GDP, the expected life expectancy increases by 0.0007649. (Not very much!)
+For every additional unit of engine displacement, the expected fuel efficiency decreases by 2.6305.
 
 *Be careful not to imply that there is a direct causal link, especially without more evidence or studies.*
 
 ## $R^{2}$ shows the amount (proportion) of variation in $Y$ that is accounted for by $X$.
 
 ```
-Multiple R-squared:  0.3407,	Adjusted R-squared:  0.3403 
-F-statistic: 879.6 on 1 and 1702 DF,  p-value: < 2.2e-16
+Multiple R-squared:  0.6376,	Adjusted R-squared:  0.6361 
+F-statistic: 408.2 on 1 and 232 DF,  p-value: < 2.2e-16
 ```
 
 $R^{2}$ ranges from 0 to 1. If it were 1, the variables would make a straight line. If it were 0, the x variable wouldn't predict the y variable at all.
 
 ---
 
-In this example, $R^{2}=0.3407$, so GDP accounts for about 34% of the variation in life expectancy.
+In this example, $R^{2}=0.6376$, so engine displacement accounts for about 64% of the variation in fuel efficiency.
 
 There's no rule for what makes an $R^{2}$ "good." Consider the context and purpose of your analysis!
 
@@ -286,8 +285,8 @@ In an analysis of ecology or human behavior (very unpredictable) an R2 of 0.20 o
 ## The $R^{2}$ is also accompanied by a p-value.
 
 ```
-Multiple R-squared:  0.3407,	Adjusted R-squared:  0.3403 
-F-statistic: 879.6 on 1 and 1702 DF,  p-value: < 2.2e-16
+Multiple R-squared:  0.6376,	Adjusted R-squared:  0.6361 
+F-statistic: 408.2 on 1 and 232 DF,  p-value: < 2.2e-16
 ```
 
 This is a significance test for the probability of observing a result this extreme, assuming the true $R^{2}$ is 0. Here the p-value is very small: there's a *statistically significant* relationship.
@@ -299,10 +298,14 @@ This is a significance test for the probability of observing a result this extre
 Also called a "regression line."
 
 ```r
-ggplot(gapminder, aes(x=gdpPercap,y=lifeExp)) +
+ggplot(mpg, aes(displ,cty)) +
   geom_point() +
   stat_smooth(method="lm")
 ```
+
+---
+
+![](img/mpg_regression.png)
 
 ## Create a Q-Q plot of the residuals.
 
@@ -314,7 +317,10 @@ res <- rstandard(regression$fit) # First get the residuals
 # Then make the plot
 ggplot(,aes(sample=res)) +
   geom_qq() +
-  geom_qq_line()
+  geom_qq_line() +
+  labs(y="Standardized Residuals", x="Normal Scores")
 ```
 
-You're looking to see if the dots stray from the line.
+---
+
+![You're looking to see if the dots stray from the line.](img/mpg_qq.png)

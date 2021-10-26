@@ -186,8 +186,8 @@
 <h1>Linear Regression</h1>
 
 </section>
-<section id="we-can-use-correlation-coefficients-and-correlation-tests-to-learn-the-strength-of-a-correlation-but-how-do-we-learn-the-nature-of-a-correlation" class="slide level2">
-<h2>We can use correlation coefficients and correlation tests to learn the <em>strength</em> of a correlation, but how do we learn the <em>nature</em> of a correlation?</h2>
+<section id="we-can-use-correlation-coefficients-and-correlation-tests-to-learn-the-strength-of-a-relationship-but-how-do-we-learn-the-nature-of-a-relationship" class="slide level2">
+<h2>We can use correlation coefficients and correlation tests to learn the <em>strength</em> of a relationship, but how do we learn the <em>nature</em> of a relationship?</h2>
 </section>
 <section id="questions-we-might-want-to-answer-with-regression" class="slide level2">
 <h2>Questions we might want to answer with regression:</h2>
@@ -261,50 +261,55 @@
 <h1>Linear regression in R</h1>
 
 </section>
-<section id="lets-use-gapminder-data" class="slide level2">
-<h2>Let’s use <code>gapminder</code> data</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Tidyverse gets us dplyr and ggplot</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a quick look at gapminder</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gapminder)</span></code></pre></div>
-</section>
 <section id="always-start-with-exploratory-analysis." class="slide level2">
 <h2>Always start with exploratory analysis.</h2>
-<p>Do you have good reason to believe that a linear regression or predictive model would help? Is there are a relationship between variables that’s worth learning about?</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s make a scatter plot of life expectancy and GDP,</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># but only in the US over different years.</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>usOnly <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> <span class="fu">filter</span>(country<span class="sc">==</span><span class="st">&quot;United States&quot;</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(usOnly, <span class="fu">aes</span>(gdpPercap, lifeExp)) <span class="sc">+</span> </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p>Do you have good reason to believe that a linear regression or predictive model would help? Is there a relationship between variables that’s worth learning about?</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Gets us both dplyr and ggplot!</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s make a scatter plot of engine displacement and</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># city fuel efficiency, in the mpg dataset.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, cty)) <span class="sc">+</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 </section>
-<section id="it-looks-like-there-might-be-a-linear-relationship-for-the-us" class="slide level2">
-<h2>It looks like there might be a linear relationship for the US!</h2>
-<p>We can see a general trend: as GDP goes up, so does life expectancy. Now we’re ready to try modeling this relationship.</p>
+<section class="slide level2">
+
+<figure>
+<img data-src="img/mpg_scatter_regression.png" alt="What do you think?" /><figcaption aria-hidden="true">What do you think?</figcaption>
+</figure>
+</section>
+<section id="it-looks-like-there-might-be-a-linear-relationship" class="slide level2">
+<h2>It looks like there might be a linear relationship!</h2>
+<p>We can see a general trend: as engine size goes up, fuel efficiency goes down. Now we’re ready to try modeling this relationship.</p>
+</section>
+<section id="beware" class="slide level2">
+<h2>Beware!</h2>
+<figure>
+<img data-src="img/xkcd_regression.png" alt="xkcd.com/1725" /><figcaption aria-hidden="true">xkcd.com/1725</figcaption>
+</figure>
 </section>
 <section id="for-statistical-modeling-in-r-we-can-use-tidymodels." class="slide level2">
 <h2>For statistical modeling in R, we can use <code>tidymodels</code>.</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the console only:</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidymodels&quot;</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># In your .R file or RMarkdown:</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the console only:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidymodels&quot;</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># In your .R file or RMarkdown:</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code></pre></div>
 </section>
 <section id="first-we-choose-our-model-then-we-fit-it-to-our-data-then-we-can-summarize-or-predict." class="slide level2">
 <h2>First we choose our model, then we fit it to our data, then we can summarize or predict.</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save everything in a variable called &quot;regression&quot;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>regression <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> <span class="co"># Choose the linear regression model</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;lm&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Set linear model as our engine</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(lifeExp<span class="sc">~</span>gdpPercap, <span class="at">data =</span> usOnly) <span class="co"># Fit to our data</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save everything in a variable called &quot;regression&quot;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>regression <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> <span class="co"># Choose the linear regression model</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;lm&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Set linear model as our engine</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(cty<span class="sc">~</span>displ, <span class="at">data =</span> mpg) <span class="co"># Fit to our data</span></span></code></pre></div>
 </section>
 <section id="we-have-several-ways-of-looking-at-the-results" class="slide level2">
 <h2>We have several ways of looking at the results</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(regression) <span class="co"># See the slope and intercept (m and b)</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(regression) <span class="co"># See R2 and other important stats</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the main one:</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regression<span class="sc">$</span>fit) <span class="co"># See a summary of everything</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(regression) <span class="co"># See the slope and intercept (m and b)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(regression) <span class="co"># See R2 and other important stats</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the main one:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regression<span class="sc">$</span>fit) <span class="co"># See a summary of everything</span></span></code></pre></div>
 </section></section>
 <section>
 <section id="interpreting-linear-regression" class="title-slide slide level1">
@@ -317,48 +322,48 @@
 <section id="call-shows-the-formula-you-used." class="slide level2">
 <h2>“Call” shows the formula you used.</h2>
 <pre><code>Call:
-stats::lm(formula = lifeExp ~ gdpPercap, data = data)</code></pre>
+stats::lm(formula = cty ~ displ, data = data)</code></pre>
 <p>This would help if you didn’t have the original code.</p>
 </section>
 <section id="residuals-are-the-differences-between-the-actual-observed-values-and-the-ones-the-model-predicted." class="slide level2">
 <h2>Residuals are the differences between the actual observed values and the ones the model predicted.</h2>
 <pre><code>Residuals:
     Min      1Q  Median      3Q     Max 
--82.754  -7.758   2.176   8.225  18.426 </code></pre>
+-6.3109 -1.4695 -0.2566  1.1087 14.0064 </code></pre>
 <p><small>Think of these as the “errors” that the modeling method produced. If the residuals are symmetrically distributed with the median close to zero, the model may fit the data well.</small></p>
 </section>
 <section id="coefficients-show-an-estimate-for-the-intercept-b-and-the-slope-m." class="slide level2">
 <h2>Coefficients show an estimate for the intercept (<span class="math inline">\(b\)</span>) and the slope (<span class="math inline">\(m\)</span>).</h2>
 <pre><code>Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 5.396e+01  3.150e-01  171.29   &lt;2e-16 ***
-gdpPercap   7.649e-04  2.579e-05   29.66   &lt;2e-16 ***
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  25.9915     0.4821   53.91   &lt;2e-16 ***
+displ        -2.6305     0.1302  -20.20   &lt;2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
 <p>We get estimates and a p-value (<code>Pr(&gt;|t|)</code>) for each coefficient. The coefficients tell us the <em>nature</em> of the relationship and whether it’s “significant.”</p>
 </section>
 <section class="slide level2">
 
-<p>With a slope of <code>7.649e-04</code> and a low p-value, this linear regression provides evidence that as GDP increases, life expectancy also increases!</p>
-<p>For every additional unit of GDP, the expected life expectancy increases by 0.0007649. (Not very much!)</p>
+<p>With a slope of <code>-2.6305</code> and a very low p-value, this linear regression provides evidence that as engine displacment increases, fuel efficiency decreases!</p>
+<p>For every additional unit of engine displacement, the expected fuel efficiency decreases by 2.6305.</p>
 <p><em>Be careful not to imply that there is a direct causal link, especially without more evidence or studies.</em></p>
 </section>
 <section id="r2-shows-the-amount-proportion-of-variation-in-y-that-is-accounted-for-by-x." class="slide level2">
 <h2><span class="math inline">\(R^{2}\)</span> shows the amount (proportion) of variation in <span class="math inline">\(Y\)</span> that is accounted for by <span class="math inline">\(X\)</span>.</h2>
-<pre><code>Multiple R-squared:  0.3407,    Adjusted R-squared:  0.3403 
-F-statistic: 879.6 on 1 and 1702 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre><code>Multiple R-squared:  0.6376,    Adjusted R-squared:  0.6361 
+F-statistic: 408.2 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><span class="math inline">\(R^{2}\)</span> ranges from 0 to 1. If it were 1, the variables would make a straight line. If it were 0, the x variable wouldn’t predict the y variable at all.</p>
 </section>
 <section class="slide level2">
 
-<p>In this example, <span class="math inline">\(R^{2}=0.3407\)</span>, so GDP accounts for about 34% of the variation in life expectancy.</p>
+<p>In this example, <span class="math inline">\(R^{2}=0.6376\)</span>, so engine displacement accounts for about 64% of the variation in fuel efficiency.</p>
 <p>There’s no rule for what makes an <span class="math inline">\(R^{2}\)</span> “good.” Consider the context and purpose of your analysis!</p>
 <p>In an analysis of ecology or human behavior (very unpredictable) an R2 of 0.20 or 0.30, might be considered good. In an analysis predicting mechanical repairs, or recovery from medical procedures, an R2 of 0.60 or 0.70 might be considered very poor.</p>
 </section>
 <section id="the-r2-is-also-accompanied-by-a-p-value." class="slide level2">
 <h2>The <span class="math inline">\(R^{2}\)</span> is also accompanied by a p-value.</h2>
-<pre><code>Multiple R-squared:  0.3407,    Adjusted R-squared:  0.3403 
-F-statistic: 879.6 on 1 and 1702 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre><code>Multiple R-squared:  0.6376,    Adjusted R-squared:  0.6361 
+F-statistic: 408.2 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>This is a significance test for the probability of observing a result this extreme, assuming the true <span class="math inline">\(R^{2}\)</span> is 0. Here the p-value is very small: there’s a <em>statistically significant</em> relationship.</p>
 </section></section>
 <section>
@@ -369,20 +374,30 @@ F-statistic: 879.6 on 1 and 1702 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="look-at-the-original-data-but-with-a-line-of-best-fit." class="slide level2">
 <h2>Look at the original data, but with a line of best fit.</h2>
 <p>Also called a “regression line.”</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x=</span>gdpPercap,<span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ,cty)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+</section>
+<section class="slide level2">
+
+<p><img data-src="img/mpg_regression.png" /></p>
 </section>
 <section id="create-a-q-q-plot-of-the-residuals." class="slide level2">
 <h2>Create a Q-Q plot of the residuals.</h2>
 <p>The quantile-quantile plot shows how closely your residuals follow a normal distribution.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(regression<span class="sc">$</span>fit) <span class="co"># First get the residuals</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then make the plot</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(,<span class="fu">aes</span>(<span class="at">sample=</span>res)) <span class="sc">+</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
-<p>You’re looking to see if the dots stray from the line.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(regression<span class="sc">$</span>fit) <span class="co"># First get the residuals</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then make the plot</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(,<span class="fu">aes</span>(<span class="at">sample=</span>res)) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">&quot;Standardized Residuals&quot;</span>, <span class="at">x=</span><span class="st">&quot;Normal Scores&quot;</span>)</span></code></pre></div>
+</section>
+<section class="slide level2">
+
+<figure>
+<img data-src="img/mpg_qq.png" alt="You’re looking to see if the dots stray from the line." /><figcaption aria-hidden="true">You’re looking to see if the dots stray from the line.</figcaption>
+</figure>
 </section></section>
     </div>
   </div>
