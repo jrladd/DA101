@@ -146,9 +146,9 @@ Can also be written as: $Y=b_{1}X+b_{0}$
 
 ## $Y=mX+b$
 
-$Y$ is your independent variable.
+$Y$ is your dependent variable.
 
-$X$ is your dependent variable.
+$X$ is your independent variable.
 
 ## $Y=mX+b$
 
