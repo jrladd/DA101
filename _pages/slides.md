@@ -39,6 +39,6 @@ permalink: /slides/
 
 [Mapping and Spatial Data](/DA101/slides/mapping)
 
-### Week 9
+### Weeks 9 & 10
 
 [Predictive Analytics: Regression](/DA101/slides/predictive)
