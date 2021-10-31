@@ -324,3 +324,26 @@ ggplot(,aes(sample=res)) +
 ---
 
 ![You're looking to see if the dots stray from the line.](img/mpg_qq.png)
+
+# You Try It!
+
+## Challenge
+
+With a partner, perform a linear regression to determine how the number of years a worker is *exposed* to cotton dust is related to a measure of lung capacity: the peak expiratory flow rate.
+
+You can [download the data here](https://raw.githubusercontent.com/gedeck/practical-statistics-for-data-scientists/master/data/LungDisease.csv).
+
+## Follow these steps:
+
+1. Create a new RMarkdown file (you'll email this to me at the end of class).
+2. Determine which should be your dependent and which should be your independent variable.
+3. Create a scatter plot with a trend line to see if you think there is a linear relationship. Form a hypothesis with your partner!
+4. Using `tidymodels`, create a linear regression model and fit it to the data.
+
+(continued on next slide)
+
+## Follow these steps (continued):
+
+5. Interpret the summary of the model *completely and accurately and in terms of the data*.
+6. Validate your model with a Q-Q plot of the residuals. Is this model valid?
+7. Email me your RMarkdown file with all of the code, visualizations, and interpretations.
