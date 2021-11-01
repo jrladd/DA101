@@ -12,13 +12,19 @@ On this page you'll find the main assignments for our course. Detailed descripti
 
 Instead of a letter grade, you'll receive a number of points for each assignment out of a possible total. Sometimes these values are multiplied by ten to allow for easier grading, i.e. if something is worth 5 points, you might receive a grade out of 50. At the end of the semester, all the points you received will be added up to determine your final grade (see the grading scale below).
 
-Assignment|Point Value
+Assignment|Percentage
 ----|--
-Quizzes|10
-Code Glossary|10
-Lab Work & Reports|50
-Oral Presentation|5
-Final Project|25
+Quizzes|10%
+Code Glossary|10%
+Lab Work & Reports|50%
+Oral Presentation|5%
+Final Project|25%
+
+### Lateness and Extensions
+
+I know that things don't always go according to plan. If you need an extension, simply ask for one (by email), and you'll almost always receive it. You don't need an excuse to receive an extension!
+
+However, you **must ask for the extension *at least* 24 hours before the assignment deadline**. When you email about an extension, please propose a new deadline for the assignment (a good rule of thumb is 2 or 3 days after the original deadline). Any work received late without an agreed-upon extension may result in a late penalty.
 
 ### Quizzes
 
