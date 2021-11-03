@@ -346,4 +346,4 @@ You can [download the data here](https://raw.githubusercontent.com/gedeck/practi
 
 5. Interpret the summary of the model *completely and accurately and in terms of the data*.
 6. Validate your model with a Q-Q plot of the residuals. Is this model valid?
-7. Email me your RMarkdown file with all of the code, visualizations, and interpretations.
+7. Post your knitted HTML file to Notebowl with all of the code, visualizations, and interpretations.
