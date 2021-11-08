@@ -42,3 +42,7 @@ permalink: /slides/
 ### Weeks 9 & 10
 
 [Predictive Analytics: Regression](/DA101/slides/predictive)
+
+### Week 11
+
+[Predictive Analytics: Multiple Regression](/DA101/slides/multiple)
