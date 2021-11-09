@@ -20,6 +20,7 @@
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
     div.sourceCode { margin: 1em 0; }
     pre.sourceCode { margin: 0; }
@@ -107,18 +108,18 @@
 <section id="you-can-add-more-variables-to-the-fit-function." class="slide level2">
 <h2>You can add more variables to the <code>fit()</code> function.</h2>
 <p>Let’s use the <code>mtcars</code> dataset, which has more variables than <code>mpg</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>carmodel &lt;-<span class="st"> </span><span class="kw">linear_reg</span>() <span class="op">%&gt;%</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="st">      </span><span class="kw">set_engine</span>(<span class="st">&quot;lm&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="st">      </span><span class="kw">fit</span>(mpg<span class="op">~</span>disp<span class="op">+</span>hp<span class="op">+</span>drat, <span class="dt">data=</span>mtcars)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="co">#Let&#39;s talk about the results together:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="kw">summary</span>(carmodel<span class="op">$</span>fit)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>carmodel <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">set_engine</span>(<span class="st">&quot;lm&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">fit</span>(mpg<span class="sc">~</span>disp<span class="sc">+</span>hp<span class="sc">+</span>drat, <span class="at">data=</span>mtcars)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Let&#39;s talk about the results together:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(carmodel<span class="sc">$</span>fit)</span></code></pre></div>
 </section>
 <section id="once-you-have-a-model-you-can-predict-new-values" class="slide level2">
 <h2>Once you have a model, you can predict new values!</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>newvals &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">disp=</span><span class="dv">400</span>,<span class="dt">hp=</span><span class="dv">145</span>,<span class="dt">drat=</span><span class="fl">4.2</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="kw">predict</span>(carmodel,newvals)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>newvals <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">disp=</span><span class="dv">400</span>,<span class="at">hp=</span><span class="dv">145</span>,<span class="at">drat=</span><span class="fl">4.2</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(carmodel,newvals)</span></code></pre></div>
 </section></section>
 <section>
 <section id="how-to-choose-predictor-variables" class="title-slide slide level1">
@@ -146,9 +147,9 @@
 <section id="how-do-we-find-multicollinearity" class="slide level2">
 <h2>How do we find multicollinearity?</h2>
 <p>You can do a <em>pairwise</em> comparison of the variables you’re thinking about.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">library</span>(GGally)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="kw">ggpairs</span>(dataset, <span class="dt">columns=</span><span class="kw">c</span>(<span class="st">&quot;var1&quot;</span>,<span class="st">&quot;var2&quot;</span>,<span class="st">&quot;var3&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(dataset, <span class="at">columns=</span><span class="fu">c</span>(<span class="st">&quot;var1&quot;</span>,<span class="st">&quot;var2&quot;</span>,<span class="st">&quot;var3&quot;</span>))</span></code></pre></div>
 <p>This will give you scatterplots and correlation coefficients to compare.</p>
 </section>
 <section id="you-can-consider-categorical-variables-as-predictors-too." class="slide level2">
@@ -163,16 +164,58 @@
 <p>Take a look at the dataset and logically choose some predictors. Check for multicollinearity before you run your model! When you’re done, try to predict housing price based on some new data points you create.</p>
 <p>Download <a href="../data/house_sales.tsv">house_sales.tsv</a>. You’ll need to open this with <code>housing &lt;- read_tsv("house_sales.tsv")</code>.</p>
 </section></section>
+<section>
 <section id="regression-diagnostics" class="title-slide slide level1">
 <h1>Regression Diagnostics</h1>
 
 </section>
+<section id="like-the-q-q-plot-diagnostic-plots-help-us-understand-if-our-model-is-valid-and-reliable." class="slide level2">
+<h2>Like the Q-Q Plot, diagnostic plots help us understand if our model is valid and reliable.</h2>
+</section>
+<section id="autoplot-gives-us-four-common-diagnostic-plots." class="slide level2">
+<h2><code>autoplot()</code> gives us four common diagnostic plots.</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfortify)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(mpgmodel<span class="sc">$</span>fit)</span></code></pre></div>
+<p>Without <code>ggfortify</code>, you will see an error: “Objects of type lm not supported by autoplot.”</p>
+</section>
+<section class="slide level2">
+
+<figure>
+<img data-src="img/autoplot.png" alt="The output of the autoplot function. Let’s go through these one at a time" /><figcaption aria-hidden="true">The output of the autoplot function. Let’s go through these one at a time</figcaption>
+</figure>
+</section>
+<section id="on-all-of-these-graphs-pay-attention-to-labelednumbered-outliers." class="slide level2">
+<h2>On all of these graphs, pay attention to labeled/numbered outliers.</h2>
+</section>
+<section id="top-right-shows-the-q-q-plot." class="slide level2">
+<h2>Top right shows the Q-Q Plot.</h2>
+<p>We know this one already! Look for the dots to be on the line.</p>
+</section>
+<section id="top-left-shows-residuals-vs.-fitted-values." class="slide level2">
+<h2>Top left shows Residuals vs. Fitted Values.</h2>
+<p>Residuals (the vertical distance from a point to the regression line) versus the fitted values (the y-value on the line corresponding to each x-value).</p>
+<p>The blue line should be <strong>relatively flat and lie close to the gray dashed line.</strong></p>
+</section>
+<section id="bottom-left-shows-the-square-root-of-standardized-residuals-vs.-fitted-values." class="slide level2">
+<h2>Bottom left shows the square root of standardized residuals vs. fitted values.</h2>
+<p>The x-axis is the same here as on the one above. This graph helps us see <strong>homoscedasticity</strong>, that the variance in the residuals doesn’t change as a function of x.</p>
+<p>We want the <strong>blue line to be mostly flat</strong>. We want to avoid heteroscedasticity!</p>
+</section>
+<section id="lower-right-shows-standardized-residuals-against-leverage." class="slide level2">
+<h2>Lower right shows standardized residuals against leverage.</h2>
+<p>Leverage is a measure of how much each data point influences the regression. On this plot, you want to see that the <strong>blue line stays close to the horizontal gray dashed line and that no points have a large Cook’s distance (i.e, &gt;0.5).</strong></p>
+<p>In this case, it’s showing factor levels because we used a categorical variable.</p>
+</section>
+<section id="lets-try-this-again-with-your-seattle-housing-models" class="slide level2">
+<h2>Let’s try this again with your Seattle housing models!</h2>
+</section></section>
     </div>
   </div>
 
   <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
 
-  // reveal.js plugins
+  <!-- reveal.js plugins -->
   <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
   <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
   <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
@@ -183,10 +226,148 @@
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
         // Push each slide change to the browser history
-        history: true,
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
