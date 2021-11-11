@@ -204,4 +204,54 @@ simpleNetwork(edges, opacity=1, zoom=TRUE)
 
 ## We can use iGraph to calculate different metrics.
 
+```r
+# Calculate degree and add to network data
+V(G)$degree <- degree(G)
 
+# Calculate betweenness centrality and add to network data
+V(G)$betweenness <- betweenness(G, normalized=TRUE)
+
+# Calculate the ratio of betweenness to degree
+# (i.e. This is the node that functions most as a "bridge")
+V(G)$betweenness_over_degree <- betweenness(G)/degree(G)
+```
+
+## You can convert node/vertex data to a dataframe.
+
+```r
+nodes <- igraph::as_data_frame(G, what="vertices")
+```
+
+What happens if you try:
+
+```r
+edges <- igraph::as_data_frame(G, what="edges")
+```
+
+## With a dataframe, you can easily see degree and betweenness distributions.
+
+```r
+# Degree distribution
+ggplot(nodes, aes(degree)) +
+     geom_histogram()
+```
+
+How would you make a graph of the betweenness distribution?
+
+## Finally, let's make a better node-link diagram.
+
+```r
+# Convert data to networkD3-friendly format & calculate modularity clusters
+G_d3 <- igraph_to_networkD3(G, membership(cluster_fast_greedy(G)))
+
+# Add degree to node data and weight to link data
+G_d3$nodes$degree <- V(G)$degree
+G_d3$links$weight <- E(G)$weight
+
+# Create force network with nodes sized by degree and colored by modularity
+forceNetwork(Links=G_d3$links, Nodes = G_d3$nodes,
+             Source = 'source', Target = 'target',
+             Value= 'weight', NodeID = 'name',
+             Group = 'group', Nodesize='degree',
+             zoom = TRUE, opacity = 1)
+```
