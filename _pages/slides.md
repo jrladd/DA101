@@ -49,4 +49,4 @@ permalink: /slides/
 
 ### Week 12
 
-[Network Analysis](DA101/slides/networks)
+[Network Analysis](networks)
