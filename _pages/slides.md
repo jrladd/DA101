@@ -46,3 +46,7 @@ permalink: /slides/
 ### Week 11
 
 [Predictive Analytics: Multiple Regression](/DA101/slides/multiple)
+
+### Week 12
+
+[Network Analysis](DA101/slides/networks)
