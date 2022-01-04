@@ -1,5 +1,5 @@
 ---
-title: Ground Rules for Learning Tech Together
+title: Using Github Classroom for Lab Assignments
 permalink: /githubclassroom/
 ---
 
