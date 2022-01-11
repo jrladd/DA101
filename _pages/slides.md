@@ -3,50 +3,27 @@ title: Slides
 permalink: /slides/
 ---
 
-### Week 1:
+## Foundations
 
-[What Is Data?](/DA101/slides/whatisdata)
-
-### Week 2: 
-
-[Metadata and the Data Analysis Cycle](/DA101/slides/metadata_and_da_cycle)
-
-[R Basics](/DA101/slides/rbasics)
-
-### Week 3:
-
-[Data Wrangling](/DA101/slides/wrangling)
-
-### Week 4
-
-[Visualizing Data](/DA101/slides/visualizing)
-
-### Week 5
-
-[Exploratory Data Analysis](/DA101/slides/eda)
-
-### Week 6
-
-[Hypothesis Testing](/DA101/slides/hypothesis)
-
-### Week 7
-
-[Debugging](/DA101/slides/debugging)
-
+[What Is Data?](/DA101/slides/whatisdata)  
+[Metadata and the Data Analysis Cycle](/DA101/slides/metadata_and_da_cycle)  
+[R Basics](/DA101/slides/rbasics)  
+[Debugging](/DA101/slides/debugging)  
 [Ethics, Bias, and Diversity](/DA101/slides/ethics)
 
-### Week 8
+## Descriptive Analytics
 
+[Data Wrangling](/DA101/slides/wrangling)  
+[Visualizing Data](/DA101/slides/visualizing)  
+[Exploratory Data Analysis](/DA101/slides/eda)  
+[Hypothesis Testing](/DA101/slides/hypothesis)  
+
+## Predictive Analytics
+
+[Regression](/DA101/slides/predictive)  
+[Multiple Regression](/DA101/slides/multiple)
+
+## Special Topics
+
+[Network Analysis](networks)  
 [Mapping and Spatial Data](/DA101/slides/mapping)
-
-### Weeks 9 & 10
-
-[Predictive Analytics: Regression](/DA101/slides/predictive)
-
-### Week 11
-
-[Predictive Analytics: Multiple Regression](/DA101/slides/multiple)
-
-### Week 12
-
-[Network Analysis](networks)
