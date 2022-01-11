@@ -8,8 +8,6 @@ header:
   actions:
     - label: "Schedule & Readings"
       url: "/schedule/"
-    #- label: "Workshops"
-      #url: "/workshops/"
     - label: "Assignments & Grading"
       url: "/assignments/"
     - label: "Course Policies"
@@ -18,18 +16,18 @@ header:
       url: "https://notebowl.denison.edu"
     - label: "Slides"
       url: "/slides/"
-excerpt: "DA 101. Denison University. Fall 2021."
+excerpt: "DA 101. Denison University. Spring 2022."
 ---
 
-**Section 01: MWF 8:30-9:20am, Lab on Mondays 1:30-4:20pm, TA Krystal Ly  
-Section 04: MWF 11:30am-12:20pm, Lab on Wednesdays 1:30-4:20pm, TA Claire Powell**
+**Section 01: MWF 8:30-9:20am, Lab on Mondays 1:30-4:20pm, TA ...  
+Section 03: MWF 11:30am-12:20pm, Lab on Wednesdays 1:30-4:20pm, TA ...**
 
-Dr. Ladd's Student Drop-In Hours: Tu 1-3pm, W 9:30-10:30am, Th 10am-12pm in Burton Morgan 411   
-TA Hours (for all DA 101 TAs) are posted online [here](https://docs.google.com/document/d/1-lmNhmP8qp2ki3bSJdhAOYEccW5VeR2Mo2bKLz3MrlU/edit?usp=sharing).
+Dr. Ladd's Student Drop-In Hours: W 9:30-11am, Th 1-3pm in Burton Morgan 411   
+TA Hours (for all DA 101 TAs) are posted online [here](https://tinyurl.com/DA-TA-hours-SP2022).
 
 ## Course Description
 
-Many of the most pressing problems in the world can be addressed with data. We are awash in data and, modern citizenship demands that we become literate in how to interpret data, what assumptions and processes are necessary to analyze data, as well as how we might participate in generating our own analyses and presentations of data. Consequently, data analytics is an emerging field with skills applicable to a wide variety of disciplines. This course introduces analysis, computation, and presentation concerns through the investigation of data driven puzzles in a wide array of fields – political, economic, historical, social, biological, and others. No previous coding or statistics experience is required.
+Many of the most pressing problems in the world can be addressed with data. We are awash in data, and modern citizenship demands that we become literate in how to interpret data, what assumptions and processes are necessary to analyze data, as well as how we might participate in generating our own analyses and presentations of data. Consequently, data analytics is an emerging field with skills applicable to a wide variety of disciplines. This course introduces analysis, computation, and presentation concerns through the investigation of data driven puzzles in a wide array of fields – political, economic, historical, social, biological, and others. No previous coding or statistics experience is required.
 
 ## Learning Goals
 
