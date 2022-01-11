@@ -12,10 +12,6 @@ header:
       url: "/assignments/"
     - label: "Course Policies"
       url: "/policies/"
-    - label: "NoteBowl"
-      url: "https://notebowl.denison.edu"
-    - label: "Slides"
-      url: "/slides/"
 excerpt: "DA 101. Denison University. Spring 2022."
 ---
 
