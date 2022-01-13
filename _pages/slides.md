@@ -1,7 +1,14 @@
 ---
-title: Slides
+title: Slides and Resources
 permalink: /slides/
 ---
+
+# Resources
+
+[How to Explain in DA101](/DA101/resources/how-to-explain)
+[Working with Text Data](/DA101/resources/working-with-text)
+
+# Slideshows
 
 ## Foundations
 
