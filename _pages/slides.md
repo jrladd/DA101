@@ -5,7 +5,7 @@ permalink: /slides/
 
 # Resources
 
-[How to Explain in DA101](/DA101/resources/how-to-explain)
+[How to Explain in DA101](/DA101/resources/how-to-explain)  
 [Working with Text Data](/DA101/resources/working-with-text)
 
 # Slideshows
