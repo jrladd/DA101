@@ -15,8 +15,8 @@ header:
 excerpt: "DA 101. Denison University. Spring 2022."
 ---
 
-**Section 01: MWF 8:30-9:20am, Lab on Mondays 1:30-4:20pm, TA ...  
-Section 03: MWF 11:30am-12:20pm, Lab on Wednesdays 1:30-4:20pm, TA ...**
+**Section 01: MWF 8:30-9:20am, Lab on Mondays 1:30-4:20pm, TA Claire Powell  
+Section 03: MWF 11:30am-12:20pm, Lab on Wednesdays 1:30-4:20pm, TA Milo Dao**
 
 Dr. Ladd's Student Drop-In Hours: W 9:30-11am, Th 1-3pm in Burton Morgan 411   
 TA Hours (for all DA 101 TAs) are posted online [here](https://tinyurl.com/DA-TA-hours-SP2022).
