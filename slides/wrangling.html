@@ -20,7 +20,6 @@
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
     div.sourceCode { margin: 1em 0; }
     pre.sourceCode { margin: 0; }
@@ -80,9 +79,8 @@
     code span.va { color: #19177c; } /* Variable */
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/solarized.css" id="theme">
 </head>
 <body>
   <div class="reveal">
@@ -103,28 +101,28 @@
 <h2>In-Class Exercise</h2>
 <ol type="1">
 <li>Create a new .R file</li>
-<li>Install and import the ggplot2 library</li>
+<li>Import the <code>tidyverse</code> library</li>
 <li>Make sure to add comments as you go!</li>
 <li>Find the <code>mpg</code> dataset, view it, and get a summary</li>
-<li>Select a column from <code>mpg</code> and get its mean and median</li>
-<li>Create a basic scatterplot of two <code>mpg</code> variables (columns)</li>
 </ol>
-</section>
-<section id="all-this-and-more-in-chapter-4-of-our-textbook" class="slide level2">
-<h2>All this and more in <a href="https://r4ds.had.co.nz/workflow-basics.html">Chapter 4</a> of our textbook!</h2>
 </section></section>
 <section>
 <section id="wrangling-data" class="title-slide slide level1">
 <h1>Wrangling Data</h1>
 
 </section>
+<section id="why-not-just-edit-the-data-in-the-spreadsheet" class="slide level2">
+<h2>Why not just edit the data in the spreadsheet?</h2>
+</section>
 <section id="tibbles-are-special-data-frames" class="slide level2">
 <h2>Tibbles are special Data Frames</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>flights</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="kw">library</span>(nycflights13)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>flights &lt;-<span class="st"> </span>flights</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="kw">glimpse</span>(flights)</span></code></pre></div>
 </section>
 <section id="every-variable-column-has-a-data-type." class="slide level2">
 <h2>Every variable (column) has a data type.</h2>
@@ -137,6 +135,7 @@
 <li>fctr: factors (categorical variables)</li>
 <li>date: dates</li>
 </ul>
+<p>Use <code>glimpse()</code> to see columns and their types!</p>
 </section></section>
 <section>
 <section id="filtering-and-selecting" class="title-slide slide level1">
@@ -145,15 +144,16 @@
 </section>
 <section id="filter-lets-you-get-a-subset-of-observations-rows." class="slide level2">
 <h2>Filter lets you get a subset of observations (rows).</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(flights, month<span class="sc">==</span><span class="dv">1</span>, day<span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
-<p>or with dplyr’s special “pipe” notation:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(month<span class="sc">==</span><span class="dv">1</span>, day<span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>jan1_flights &lt;-<span class="st"> </span><span class="kw">filter</span>(flights, month<span class="op">==</span><span class="dv">1</span>, day<span class="op">==</span><span class="dv">1</span>)</span></code></pre></div>
+<p>or with dplyr’s special “pipe” notation, <code>%&gt;%</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>jan1_flights &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(month<span class="op">==</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>day<span class="op">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>These two are the same!</p>
 </section>
-<section id="you-can-save-dplyr-outputs-to-variables." class="slide level2">
-<h2>You can save <code>dplyr</code> outputs to variables.</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dec25 <span class="ot">&lt;-</span> <span class="fu">filter</span>(flights, month <span class="sc">==</span> <span class="dv">12</span>, day <span class="sc">==</span> <span class="dv">25</span>)</span></code></pre></div>
+<section id="you-almost-always-save-dplyr-outputs-to-variables." class="slide level2">
+<h2>You almost always save <code>dplyr</code> outputs to variables.</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>christmas_flights &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(month <span class="op">==</span><span class="st"> </span><span class="dv">12</span> <span class="op">&amp;</span><span class="st"> </span>day <span class="op">==</span><span class="st"> </span><span class="dv">25</span>)</span></code></pre></div>
 </section>
 <section id="filter-uses-standard-comparisons." class="slide level2">
 <h2><code>filter()</code> uses standard comparisons.</h2>
@@ -173,245 +173,146 @@
 </section>
 <section id="logical-operators-can-also-be-combined." class="slide level2">
 <h2>Logical operators can also be combined.</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(flights, month <span class="sc">==</span> <span class="dv">11</span> <span class="sc">|</span> month <span class="sc">==</span> <span class="dv">12</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>nov_dec <span class="ot">&lt;-</span> <span class="fu">filter</span>(flights, month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">12</span>))</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(flights, <span class="sc">!</span>(arr_delay <span class="sc">&gt;</span> <span class="dv">120</span> <span class="sc">|</span> dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(flights, arr_delay <span class="sc">&lt;=</span> <span class="dv">120</span>, dep_delay <span class="sc">&lt;=</span> <span class="dv">120</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>nov_dec &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(month <span class="op">==</span><span class="st"> </span><span class="dv">11</span> <span class="op">|</span><span class="st"> </span>month <span class="op">==</span><span class="st"> </span><span class="dv">12</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>alt_nov_dec &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(month <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">12</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>not_too_late &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(<span class="op">!</span>(arr_delay <span class="op">&gt;</span><span class="st"> </span><span class="dv">120</span> <span class="op">|</span><span class="st"> </span>dep_delay <span class="op">&gt;</span><span class="st"> </span><span class="dv">120</span>))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>alt_not_too_late &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(arr_delay <span class="op">&lt;=</span><span class="st"> </span><span class="dv">120</span>, dep_delay <span class="op">&lt;=</span><span class="st"> </span><span class="dv">120</span>)</span></code></pre></div>
 </section>
 <section id="null-values-are-never-part-of-the-filter" class="slide level2">
 <h2>Null values are never part of the filter!</h2>
 <p>It’s because they are never “true”. You must ask for them explicitly with <code>is.na()</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, x <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, <span class="fu">is.na</span>(x) <span class="sc">|</span> x <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># Create a small tibble to test</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>df &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">3</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>greater_than_one &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>greater_than_one_with_NA &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(<span class="kw">is.na</span>(x) <span class="op">|</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)</span></code></pre></div>
 </section>
 <section id="you-try-it" class="slide level2">
 <h2>You try it!</h2>
-<p>Work through the exercise in the textbook, section 5.2.4</p>
+<p>Work through the exercise in the textbook, <a href="https://r4ds.had.co.nz/transform.html#exercises-8">section 5.2.4</a>.</p>
 </section>
 <section id="arrange-lets-you-sort-rows." class="slide level2">
 <h2>Arrange lets you sort rows.</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(flights, year, month, day)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(flights, <span class="fu">desc</span>(dep_delay))</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>flights_by_date &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">arrange</span>(year, month, day)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>flights_by_longest_delay &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(dep_delay))</span></code></pre></div>
 </section>
 <section id="select-lets-you-get-a-set-of-variables-columns." class="slide level2">
 <h2>Select lets you get a set of variables (columns).</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(flights, year, month, day)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(flights, year<span class="sc">:</span>day)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(flights, <span class="sc">-</span>(year<span class="sc">:</span>day))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>only_dates &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">select</span>(year, month, day)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>only_dates &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="st">    </span><span class="kw">select</span>(year<span class="op">:</span>day)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>everything_but_dates &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>(year<span class="op">:</span>day))</span></code></pre></div>
 <p>See the <a href="https://r4ds.had.co.nz/transform.html#select">textbook</a> for additional tips.</p>
 </section>
 <section id="rename-lets-you-rename-columns." class="slide level2">
 <h2>Rename lets you rename columns.</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(flights, <span class="at">tail_num =</span> tailnum)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>flights &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">tail_num =</span> tailnum)</span></code></pre></div>
 </section>
 <section id="mutate-lets-you-add-new-columns-based-on-existing-ones." class="slide level2">
 <h2>Mutate lets you add new columns based on existing ones.</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(flights,</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">gain =</span> dep_delay <span class="sc">-</span> arr_delay,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">hours =</span> air_time <span class="sc">/</span> <span class="dv">60</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gain_per_hour =</span> gain <span class="sc">/</span> hours</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>flights &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">gain =</span> dep_delay <span class="op">-</span><span class="st"> </span>arr_delay,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>           <span class="dt">hours =</span> air_time <span class="op">/</span><span class="st"> </span><span class="dv">60</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>           <span class="dt">gain_per_hour =</span> gain <span class="op">/</span><span class="st"> </span>hours)</span></code></pre></div>
 <p>Transmute does the same thing but only keeps the new variables.</p>
-</section>
-<section id="you-try-it-1" class="slide level2">
-<h2>You Try It!</h2>
-<p>Exercises 5.3.1, 5.4.1, 5.5.2</p>
 </section></section>
 <section>
 <section id="summarizing-and-grouping" class="title-slide slide level1">
 <h1>Summarizing and Grouping</h1>
 
 </section>
+<section id="we-use-summarize-and-group_by-together-to-make-summary-tables." class="slide level2">
+<h2>We use summarize() and group_by() together to make <em>summary tables</em>.</h2>
+<p><em>Summary tables</em> are new dataframes that summarize our original data.</p>
+</section>
 <section id="summarize-lets-you-get-summary-statistics." class="slide level2">
 <h2>Summarize lets you get summary statistics.</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(flights, <span class="at">delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
-<p>Other summary functions: <code>median(), min(), max(), sd(), range()</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>avg_delay &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
+<p>Stat functions to use with summarise: <code>mean(), median(), min(), max(), sd(), range()</code>.</p>
 </section>
 <section id="groupby-lets-you-group-data-to-get-summaries-for-each-group." class="slide level2">
 <h2>Groupby lets you group data, to get summaries for each group.</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>by_month <span class="ot">&lt;-</span> <span class="fu">group_by</span>(flights, year, month)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(by_month, <span class="at">delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>by_month &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">group_by</span>(year, month)</span></code></pre></div>
+<p>It doesn’t look like anything on its own!</p>
 </section>
 <section id="the-pipe-lets-you-stack-multiple-dplyr-operations." class="slide level2">
 <h2>The pipe lets you “stack” multiple <code>dplyr</code> operations.</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>delays_by_month <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(year, month) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">dist =</span> <span class="fu">mean</span>(distance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>, dest <span class="sc">!=</span> <span class="st">&quot;HNL&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>delays_by_month &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">group_by</span>(year, month) <span class="op">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</span></code></pre></div>
+</section>
+<section id="now-we-can-put-it-all-together" class="slide level2">
+<h2>Now we can put it all together!</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>delays &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">group_by</span>(dest) <span class="op">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarize</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>    <span class="dt">count =</span> <span class="kw">n</span>(),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>    <span class="dt">dist =</span> <span class="kw">mean</span>(distance, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>    <span class="dt">delay =</span> <span class="kw">mean</span>(arr_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>  ) <span class="op">%&gt;%</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(count <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>, dest <span class="op">!=</span><span class="st"> &quot;HNL&quot;</span>)</span></code></pre></div>
+</section>
+<section id="chapter-5-has-lots-more-guidance-and-many-examples-for-you-to-try" class="slide level2">
+<h2><a href="https://r4ds.had.co.nz/transform.html">Chapter 5</a> has lots more guidance, and many examples for you to try!</h2>
 </section></section>
     </div>
   </div>
 
   <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
 
-  <!-- reveal.js plugins -->
+  // reveal.js plugins
   <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
   <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
   <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-        // Display controls in the bottom right corner
-        controls: true,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: true,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'bottom-right',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: false,
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: false,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
         // Push each slide change to the browser history
-        history: false,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: true,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'default',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: true,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'fade',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
+        history: true,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
         // reveal.js plugins
         plugins: [
+          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
