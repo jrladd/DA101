@@ -22,7 +22,7 @@ Date|Mon./Wed. Topics|Lab|Fri. Discussion
 |**Module 1: Data Basics**|
 Jan. 17-21|[What Is Data?](/DA101/slides/whatisdata); [Textbook Ch. 12](https://r4ds.had.co.nz/tidy-data.html)|Garlic Mustard: [01](https://classroom.github.com/a/a4MARovB), [03](https://classroom.github.com/a/mVNaTOBx)|[Beyond the Hype](https://www.sciencedirect.com/science/article/pii/S0268401214001066)
 Jan. 24-28|NO CLASS MONDAY; [Metadata and the Data Analysis Cycle](/DA101/slides/metadata_and_da_cycle); [R Basics](/DA101/slides/rbasics)|Book Reviews: [01](https://classroom.github.com/a/O64QccKh), [03](https://classroom.github.com/a/zOTWe4SQ)|No class: One-on-one meetings
-Jan. 31-Feb. 4|[Data Wrangling](/DA101/slides/wrangling); [Textbook Ch. 5](https://r4ds.had.co.nz/transform.html)|Movie Dialogue|[Ethics, Bias, and Diversity](/DA101/slides/ethics)
+Jan. 31-Feb. 4|[Data Wrangling](/DA101/slides/wrangling); [Textbook Ch. 5](https://r4ds.had.co.nz/transform.html)|Movie Dialogue: [01](https://classroom.github.com/a/i9A6KZUE)|[Ethics, Bias, and Diversity](/DA101/slides/ethics)
 Feb. 7-11|[Visualizing Data](/DA101/slides/visualizing); [Textbook Ch. 3](https://r4ds.had.co.nz/data-visualisation.html)|Code Glossary I|[Ugly, Bad, and Wrong Figures](https://clauswilke.com/dataviz/introduction.html)
 |**Module 2: Describe**|
 Feb. 14-18|[Exploratory Data Analysis](/DA101/slides/eda); [Textbook Ch. 7](https://r4ds.had.co.nz/exploratory-data-analysis.html); [Hypothesis Testing](/DA101/slides/hypothesis)|Substance Use|[An unprecedented Nintendo leak turns into a moral dilemma for archivists](https://www.theverge.com/2020/7/30/21347074/nintendo-gigaleak-controversy-history-preservation-archives)
