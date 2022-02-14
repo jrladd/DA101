@@ -20,6 +20,7 @@
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
     div.sourceCode { margin: 1em 0; }
     pre.sourceCode { margin: 0; }
@@ -125,9 +126,9 @@
 </section>
 <section id="we-can-calculate-the-mean-easily-in-r." class="slide level2">
 <h2>We can calculate the mean easily in R.</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>dogs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">600</span>, <span class="dv">470</span>, <span class="dv">170</span>, <span class="dv">430</span>, <span class="dv">300</span>) <span class="co"># Put the dog heights into a vector</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="kw">mean</span>(dogs) <span class="co"># Calculate the mean</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dogs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">600</span>, <span class="dv">470</span>, <span class="dv">170</span>, <span class="dv">430</span>, <span class="dv">300</span>) <span class="co"># Put the dog heights into a vector</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dogs) <span class="co"># Calculate the mean</span></span></code></pre></div>
 </section>
 <section id="median-is-the-value-such-that-half-of-the-data-lies-above-and-below." class="slide level2">
 <h2>Median is the value such that half of the data lies above and below.</h2>
@@ -135,7 +136,7 @@
 <figure>
 <img data-src="img/dogs1.gif" alt="600, 470, 170, 430, 300" /><figcaption aria-hidden="true">600, 470, 170, 430, 300</figcaption>
 </figure>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">median</span>(dogs)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(dogs)</span></code></pre></div>
 </section>
 <section id="percentile-is-a-value-such-that-p-percent-of-the-data-lies-below." class="slide level2">
 <h2>Percentile is a value such that <em>P</em> percent of the data lies below.</h2>
@@ -146,14 +147,14 @@
 <figure>
 <img data-src="img/dogs1.gif" alt="600, 470, 170, 430, 300" /><figcaption aria-hidden="true">600, 470, 170, 430, 300</figcaption>
 </figure>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">summary</span>(dogs)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dogs)</span></code></pre></div>
 </section>
 <section id="the-75th-percentile-is-the-3rd-quartile." class="slide level2">
 <h2>The 75th Percentile is the 3rd Quartile.</h2>
 <figure>
 <img data-src="img/dogs1.gif" alt="600, 470, 170, 430, 300" /><figcaption aria-hidden="true">600, 470, 170, 430, 300</figcaption>
 </figure>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">summary</span>(dogs)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dogs)</span></code></pre></div>
 </section>
 <section id="the-median-is-the-2nd-quartile" class="slide level2">
 <h2>The median is the 2nd Quartile!!</h2>
@@ -172,7 +173,7 @@
 </section>
 <section id="the-interquartile-range-is-the-difference-between-the-1st-and-3rd-quartiles." class="slide level2">
 <h2>The <strong>interquartile range</strong> is the difference between the 1st and 3rd quartiles.</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">IQR</span>(dogs)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(dogs)</span></code></pre></div>
 </section>
 <section id="a-deviation-is-the-difference-between-an-actual-value-and-an-estimate-of-location-like-the-mean." class="slide level2">
 <h2>A <strong>deviation</strong> is the difference between an actual value and an estimate of location (like the mean).</h2>
@@ -192,9 +193,9 @@
 </section>
 <section id="now-calculate-the-variance-and-standard-deviations-in-r." class="slide level2">
 <h2>Now calculate the variance and standard deviations in R.</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">var</span>(dogs)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="kw">sd</span>(dogs)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(dogs)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(dogs)</span></code></pre></div>
 <p>Were these the results you expected?</p>
 </section>
 <section id="population-vs.-sample" class="slide level2">
@@ -216,12 +217,6 @@ Sample standard deviation: <span class="math inline">\(\sqrt{27,130}=164\)</span
 <h1>Distributions: How many of each value are there?</h1>
 
 </section>
-<section id="boxplots-show-distribution-based-on-the-median." class="slide level2">
-<h2>Boxplots show distribution based on the median.</h2>
-<figure>
-<img data-src="img/dogs_boxplot.png" alt="In the boxplot for “dogs,” we see the median (dark line), interquartile range (box), range (line or “whiskers”), and sometimes outliers (dots)." /><figcaption aria-hidden="true">In the boxplot for “dogs,” we see the median (dark line), interquartile range (box), range (line or “whiskers”), and sometimes outliers (dots).</figcaption>
-</figure>
-</section>
 <section id="histograms-show-distributions-based-on-frequency-counts." class="slide level2">
 <h2>Histograms show distributions based on frequency counts.</h2>
 <figure>
@@ -234,6 +229,12 @@ Sample standard deviation: <span class="math inline">\(\sqrt{27,130}=164\)</span
 <img data-src="img/normal.png" alt="In a normal distribution, 95% of the values lie within 2 standard deviations of the mean." /><figcaption aria-hidden="true">In a normal distribution, 95% of the values lie within 2 standard deviations of the mean.</figcaption>
 </figure>
 <p>Be careful: normal distributions are assumed for many statistical analyses!</p>
+</section>
+<section id="boxplots-show-distribution-based-on-the-median." class="slide level2">
+<h2>Boxplots show distribution based on the median.</h2>
+<figure>
+<img data-src="img/eda-boxplot.png" alt="You can see how the box plot and the histogram are similar but different." /><figcaption aria-hidden="true">You can see how the box plot and the histogram are similar but different.</figcaption>
+</figure>
 </section></section>
 <section>
 <section id="correlation-are-two-variables-related" class="title-slide slide level1">
@@ -252,7 +253,7 @@ Sample standard deviation: <span class="math inline">\(\sqrt{27,130}=164\)</span
 <section id="correlation-coefficient-measures-the-extent-to-which-two-variables-are-related-on-a-scale-of--1-to-1." class="slide level2">
 <h2>Correlation coefficient measures the extent to which two variables are related, on a scale of -1 to 1.</h2>
 <p>Pearson’s correlation coefficient multiplies the deviations from the mean for two variables, and divides by the product of the standard deviation.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">cor</span>(mpg<span class="op">$</span>displ,mpg<span class="op">$</span>hwy)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mpg<span class="sc">$</span>displ,mpg<span class="sc">$</span>hwy)</span></code></pre></div>
 </section></section>
 <section>
 <section id="dont-be-fooled" class="title-slide slide level1">
@@ -272,8 +273,8 @@ Sample standard deviation: <span class="math inline">\(\sqrt{27,130}=164\)</span
 </section>
 <section id="data-challenge" class="slide level2">
 <h2>Data Challenge</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">install.packages</span>(“datasauRus”)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="kw">library</span>(datasauRus)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(“datasauRus”)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasauRus)</span></code></pre></div>
 <p>Use <code>dplyr</code> to find the summary statistics for each dataset in the <code>datasaurus_dozen</code>.</p>
 <ul>
 <li>Find mean, standard deviation, and correlation for both x and y of each dataset.</li>
@@ -286,7 +287,7 @@ Sample standard deviation: <span class="math inline">\(\sqrt{27,130}=164\)</span
 
   <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
 
-  // reveal.js plugins
+  <!-- reveal.js plugins -->
   <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
   <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
   <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
@@ -297,10 +298,148 @@ Sample standard deviation: <span class="math inline">\(\sqrt{27,130}=164\)</span
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
         // Push each slide change to the browser history
-        history: true,
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

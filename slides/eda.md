@@ -120,10 +120,6 @@ Think of it as a "correction" when your data is only a sample. R does this by de
 
 # Distributions: How many of each value are there?
 
-## Boxplots show distribution based on the median.
-
-![In the boxplot for "dogs," we see the median (dark line), interquartile range (box), range (line or "whiskers"), and sometimes outliers (dots).](img/dogs_boxplot.png)
-
 ## Histograms show distributions based on frequency counts.
 
 ![The histogram for miles per gallon highway in the mpg dataset.](img/mpg_hwy_hist.png)
@@ -133,6 +129,10 @@ Think of it as a "correction" when your data is only a sample. R does this by de
 ![In a normal distribution, 95% of the values lie within 2 standard deviations of the mean.](img/normal.png)
 
 Be careful: normal distributions are assumed for many statistical analyses!
+
+## Boxplots show distribution based on the median.
+
+![You can see how the box plot and the histogram are similar but different.](img/eda-boxplot.png)
 
 # Correlation: Are two variables related?
 
