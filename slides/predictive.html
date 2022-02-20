@@ -20,7 +20,6 @@
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
     div.sourceCode { margin: 1em 0; }
     pre.sourceCode { margin: 0; }
@@ -81,7 +80,7 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/serif.css" id="theme">
 </head>
 <body>
   <div class="reveal">
@@ -94,69 +93,8 @@
 </section>
 
 <section>
-<section id="lets-start-by-building-on-our-hypothesis-tests." class="title-slide slide level1">
-<h1>Let’s start by building on our hypothesis tests.</h1>
-
-</section>
-<section id="how-do-we-test-whether-the-means-of-two-groups-are-the-same" class="slide level2">
-<h2>How do we test whether the means of two groups are the same?</h2>
-<p>The two-sample t-test: (This one is review!)</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First filter some data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mpg_filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(mpg, class<span class="sc">==</span><span class="st">&quot;minivan&quot;</span><span class="sc">|</span>class<span class="sc">==</span><span class="st">&quot;pickup&quot;</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Then run the test</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(hwy<span class="sc">~</span>class,mpg_filtered)</span></code></pre></div>
-</section>
-<section id="how-do-we-test-the-mean-of-one-variable" class="slide level2">
-<h2>How do we test the mean of one variable?</h2>
-<p>The one-sample t-test:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the test to see if the mean of hwy</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># is greater than 0.</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(mpg<span class="sc">$</span>hwy, <span class="at">mu=</span><span class="dv">0</span>, <span class="at">alternative=</span><span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
-<p>We can set the default mean (<code>mu</code>) to <em>any value</em>. Remember that the variable <strong>must</strong> be normally distributed.</p>
-</section>
-<section id="how-do-we-know-if-a-variable-is-normally-distributed" class="slide level2">
-<h2>How do we know if a variable is normally distributed?</h2>
-<p>The Shapiro-Wilk test:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(mpg<span class="sc">$</span>hwy)</span></code></pre></div>
-<p><strong>Important note</strong>: the variable likely has a normal distribution if the p-value is <em>higher</em> than .05. Always compare with a histogram!</p>
-</section>
-<section id="can-we-make-our-own-normally-distributed-variable" class="slide level2">
-<h2>Can we make our own normally-distributed variable?</h2>
-<p>Let’s try out <code>rnorm()</code>. It takes 3 parameters: the number of observations, the mean, and the standard deviation.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A normally-distributed variable of 100 values, with mean of 5 and sd of 2</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="dv">5</span>, <span class="at">sd=</span><span class="dv">2</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s look at this one:</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(,<span class="fu">aes</span>(v1)) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># And we can test to make sure it&#39;s normally distributed:</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(v1)</span></code></pre></div>
-</section></section>
-<section>
-<section id="you-try-it" class="title-slide slide level1">
-<h1>You Try It!</h1>
-
-</section>
-<section id="set-up" class="slide level2">
-<h2>Set Up</h2>
-<p>Install and load the <code>palmerpenguins</code> dataset. Then create a filtered dataset of only the Adelie penguins.</p>
-<p>Make sure you’ve got <code>tidyverse</code> imported, too.</p>
-<p>Ask yourself: what test or function would you run? How would you run it?</p>
-</section>
-<section id="challenges" class="slide level2">
-<h2>Challenges</h2>
-<ol type="1">
-<li><p>Are the flipper lengths of Adelie penguins normally distributed?</p></li>
-<li><p>Are the flipper lengths of Adelie penguins significantly less than 190mm?</p></li>
-<li><p>Is there a significant difference in the flipper length of Adelie penguins vs. Gentoo penguins?</p></li>
-<li><p>Let’s create a normally distributed variable with roughly the same mean and standard deviation as the flipper length of Adelie penguins, but with twice the number of observations.</p></li>
-</ol>
-</section></section>
-<section>
-<section id="understanding-correlation" class="title-slide slide level1">
-<h1>Understanding Correlation</h1>
+<section id="more-on-correlation" class="title-slide slide level1">
+<h1>More on Correlation</h1>
 
 </section>
 <section id="lets-think-about-how-we-look-at-the-relationship-of-two-variables." class="slide level2">
@@ -164,13 +102,13 @@
 </section>
 <section id="remember-the-pearson-correlation-coefficient" class="slide level2">
 <h2>Remember the Pearson correlation coefficient?</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mpg<span class="sc">$</span>displ,mpg<span class="sc">$</span>cty)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">cor</span>(mpg<span class="op">$</span>displ,mpg<span class="op">$</span>cty)</span></code></pre></div>
 <p>This tells us the strength of the correlation, but is this correlation <em>statistically significant</em>?</p>
 </section>
 <section id="theres-a-test-for-this-too" class="slide level2">
 <h2>There’s a test for this, too!</h2>
 <p>The correlation test:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(mpg<span class="sc">$</span>displ,mpg<span class="sc">$</span>cty)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">cor.test</span>(mpg<span class="op">$</span>displ,mpg<span class="op">$</span>cty)</span></code></pre></div>
 <p>Now we know the variables are correlated, and we know that this correlation is statistically significant. But we can learn more about the <em>nature</em> of the relationship…</p>
 </section>
 <section id="but-first-more-challenges" class="slide level2">
@@ -264,13 +202,13 @@
 <section id="always-start-with-exploratory-analysis." class="slide level2">
 <h2>Always start with exploratory analysis.</h2>
 <p>Do you have good reason to believe that a linear regression or predictive model would help? Is there a relationship between variables that’s worth learning about?</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Gets us both dplyr and ggplot!</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s make a scatter plot of engine displacement and</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># city fuel efficiency, in the mpg dataset.</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, cty)) <span class="sc">+</span> </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse) <span class="co"># Gets us both dplyr and ggplot!</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co"># Let&#39;s make a scatter plot of engine displacement and</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="co"># city fuel efficiency, in the mpg dataset.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, cty)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 </section>
 <section class="slide level2">
 
@@ -290,26 +228,26 @@
 </section>
 <section id="for-statistical-modeling-in-r-we-can-use-tidymodels." class="slide level2">
 <h2>For statistical modeling in R, we can use <code>tidymodels</code>.</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the console only:</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidymodels&quot;</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># In your .R file or RMarkdown:</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="co"># In the console only:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidymodels&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co"># In your .R file or RMarkdown:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="kw">library</span>(tidymodels)</span></code></pre></div>
 </section>
 <section id="first-we-choose-our-model-then-we-fit-it-to-our-data-then-we-can-summarize-or-predict." class="slide level2">
 <h2>First we choose our model, then we fit it to our data, then we can summarize or predict.</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save everything in a variable called &quot;regression&quot;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>regression <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> <span class="co"># Choose the linear regression model</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;lm&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Set linear model as our engine</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(cty<span class="sc">~</span>displ, <span class="at">data =</span> mpg) <span class="co"># Fit to our data</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co"># Save everything in a variable called &quot;regression&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>regression &lt;-<span class="st"> </span><span class="kw">linear_reg</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Choose the linear regression model</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">set_engine</span>(<span class="st">&quot;lm&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Set linear model as our engine</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">fit</span>(cty<span class="op">~</span>displ, <span class="dt">data =</span> mpg) <span class="co"># Fit to our data</span></span></code></pre></div>
 </section>
 <section id="we-have-several-ways-of-looking-at-the-results" class="slide level2">
 <h2>We have several ways of looking at the results</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(regression) <span class="co"># See the slope and intercept (m and b)</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(regression) <span class="co"># See R2 and other important stats</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the main one:</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regression<span class="sc">$</span>fit) <span class="co"># See a summary of everything</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">tidy</span>(regression) <span class="co"># See the slope and intercept (m and b)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="kw">glance</span>(regression) <span class="co"># See R2 and other important stats</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="co"># This is the main one:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="kw">summary</span>(regression<span class="op">$</span>fit) <span class="co"># See a summary of everything</span></span></code></pre></div>
 </section></section>
 <section>
 <section id="interpreting-linear-regression" class="title-slide slide level1">
@@ -374,9 +312,9 @@ F-statistic: 408.2 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="look-at-the-original-data-but-with-a-line-of-best-fit." class="slide level2">
 <h2>Look at the original data, but with a line of best fit.</h2>
 <p>Also called a “regression line.”</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ,cty)) <span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ,cty)) <span class="op">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 </section>
 <section class="slide level2">
 
@@ -385,13 +323,13 @@ F-statistic: 408.2 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="create-a-q-q-plot-of-the-residuals." class="slide level2">
 <h2>Create a Q-Q plot of the residuals.</h2>
 <p>The quantile-quantile plot shows how closely your residuals follow a normal distribution.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(regression<span class="sc">$</span>fit) <span class="co"># First get the residuals</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then make the plot</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(,<span class="fu">aes</span>(<span class="at">sample=</span>res)) <span class="sc">+</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">&quot;Standardized Residuals&quot;</span>, <span class="at">x=</span><span class="st">&quot;Normal Scores&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>res &lt;-<span class="st"> </span><span class="kw">rstandard</span>(regression<span class="op">$</span>fit) <span class="co"># First get the residuals</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="co"># Then make the plot</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="kw">ggplot</span>(,<span class="kw">aes</span>(<span class="dt">sample=</span>res)) <span class="op">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_qq</span>() <span class="op">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_qq_line</span>() <span class="op">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y=</span><span class="st">&quot;Standardized Residuals&quot;</span>, <span class="dt">x=</span><span class="st">&quot;Normal Scores&quot;</span>)</span></code></pre></div>
 </section>
 <section class="slide level2">
 
@@ -400,7 +338,7 @@ F-statistic: 408.2 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 </figure>
 </section></section>
 <section>
-<section id="you-try-it-1" class="title-slide slide level1">
+<section id="you-try-it" class="title-slide slide level1">
 <h1>You Try It!</h1>
 
 </section>
@@ -432,7 +370,7 @@ F-statistic: 408.2 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
 
   <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
 
-  <!-- reveal.js plugins -->
+  // reveal.js plugins
   <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
   <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
   <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
@@ -443,148 +381,10 @@ F-statistic: 408.2 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-        // Display controls in the bottom right corner
-        controls: true,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: true,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'bottom-right',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: true,
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
         // Push each slide change to the browser history
-        history: false,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: true,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'default',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: true,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'fade',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
+        history: true,
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

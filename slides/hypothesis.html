@@ -17,6 +17,68 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/solarized.css" id="theme">
 </head>
@@ -67,7 +129,7 @@
 <section id="the-null-hypothesis-assumes-equality." class="slide level2">
 <h2>The Null Hypothesis assumes <em>equality</em>.</h2>
 <p>Consider two sample groups, A and B. (Such as the male and female groups of your alcohol use data.)</p>
-<p>The null hypothesis would assume that the means of A and B are <em>equal</em>, that there is no difference between them, and that any observed difference we see is the result of randomness.</p>
+<p>In a t-test, the null hypothesis would assume that the means of A and B are <em>equal</em>, that there is no difference between them, and that any observed difference we see is the result of randomness.</p>
 </section>
 <section id="in-a-hypothesis-test-we-try-to-prove-the-null-hypothesis-wrong." class="slide level2">
 <h2>In a hypothesis test, we try to prove the null hypothesis <em>wrong</em>.</h2>
@@ -178,10 +240,10 @@
 <h2>Don’t <em>only</em> consider the p-value!</h2>
 <p>Consider results that are:</p>
 <ul>
-<li><strong>Statistically significant and useful</strong></li>
-<li>Statistically significant and not useful</li>
-<li>Statistically insignificant and useful</li>
-<li>Marginally significant and useful (practically significant)</li>
+<li><strong>Statistically significant and practically significant (i.e. useful)</strong></li>
+<li>Statistically significant and <em>not</em> practically significant (i.e. not useful)</li>
+<li>Statistically insignificant and practically significant</li>
+<li>Marginally significant and practically significant</li>
 </ul>
 </section>
 <section id="error-in-hypothesis-testing" class="slide level2">
@@ -192,6 +254,67 @@
 <li><p>Type II Error (beta-error) is failing to reject the null hypothesis when it is false.</p></li>
 </ul>
 <p>Misreading or overemphasizing the p-value can lead us to error!</p>
+</section></section>
+<section>
+<section id="more-hypothesis-tests" class="title-slide slide level1">
+<h1>More Hypothesis Tests!</h1>
+
+</section>
+<section id="how-do-we-test-whether-the-means-of-two-groups-are-the-same" class="slide level2">
+<h2>How do we test whether the means of two groups are the same?</h2>
+<p>The two-sample t-test: (This one is review!)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co"># First filter some data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>mpg_filtered &lt;-<span class="st"> </span><span class="kw">filter</span>(mpg, class<span class="op">==</span><span class="st">&quot;minivan&quot;</span><span class="op">|</span>class<span class="op">==</span><span class="st">&quot;pickup&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="co"># Then run the test</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="kw">t.test</span>(hwy<span class="op">~</span>class,mpg_filtered)</span></code></pre></div>
+</section>
+<section id="how-do-we-test-the-mean-of-one-variable" class="slide level2">
+<h2>How do we test the mean of one variable?</h2>
+<p>The one-sample t-test:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="co"># Run the test to see if the mean of hwy</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="co"># is greater than 0.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="kw">t.test</span>(mpg<span class="op">$</span>hwy, <span class="dt">mu=</span><span class="dv">0</span>, <span class="dt">alternative=</span><span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<p>We can set the default mean (<code>mu</code>) to <em>any value</em>. Remember that the variable <strong>must</strong> be normally distributed.</p>
+</section>
+<section id="how-do-we-know-if-a-variable-is-normally-distributed" class="slide level2">
+<h2>How do we know if a variable is normally distributed?</h2>
+<p>The Shapiro-Wilk test:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">shapiro.test</span>(mpg<span class="op">$</span>hwy)</span></code></pre></div>
+<p><strong>Important note</strong>: the variable likely has a normal distribution if the p-value is <em>higher</em> than .05. Always compare with a histogram!</p>
+</section>
+<section id="can-we-make-our-own-normally-distributed-variable" class="slide level2">
+<h2>Can we make our own normally-distributed variable?</h2>
+<p>Let’s try out <code>rnorm()</code>. It takes 3 parameters: the number of observations, the mean, and the standard deviation.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="co"># A normally-distributed variable of 100 values, with mean of 5 and sd of 2</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean=</span><span class="dv">5</span>, <span class="dt">sd=</span><span class="dv">2</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co"># Let&#39;s look at this one:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="kw">ggplot</span>(,<span class="kw">aes</span>(v1)) <span class="op">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="co"># And we can test to make sure it&#39;s normally distributed:</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="kw">shapiro.test</span>(v1)</span></code></pre></div>
+</section></section>
+<section>
+<section id="you-try-it" class="title-slide slide level1">
+<h1>You Try It!</h1>
+
+</section>
+<section id="set-up" class="slide level2">
+<h2>Set Up</h2>
+<p>Install and load the <code>palmerpenguins</code> dataset. Then create a filtered dataset of only the Adelie penguins.</p>
+<p>Make sure you’ve got <code>tidyverse</code> imported, too.</p>
+<p>Ask yourself: what test or function would you run? How would you run it?</p>
+</section>
+<section id="challenges" class="slide level2">
+<h2>Challenges</h2>
+<ol type="1">
+<li><p>Are the flipper lengths of Adelie penguins normally distributed?</p></li>
+<li><p>Are the flipper lengths of Adelie penguins significantly less than 190mm?</p></li>
+<li><p>Is there a significant difference in the flipper length of Adelie penguins vs. Gentoo penguins?</p></li>
+<li><p>Let’s create a normally distributed variable with roughly the same mean and standard deviation as the flipper length of Adelie penguins, but with twice the number of observations.</p></li>
+</ol>
 </section></section>
     </div>
   </div>
