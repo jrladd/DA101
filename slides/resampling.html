@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="DA 101, Dr. Ladd">
+  <title>Resampling and Permutation</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/serif.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Resampling and Permutation</h1>
+  <p class="author">DA 101, Dr. Ladd</p>
+</section>
+
+<section>
+<section id="how-do-you-solve-a-problem-like-a-t-test" class="title-slide slide level1">
+<h1>How do you solve a problem like a T-Test?</h1>
+
+</section>
+<section id="t-tests-rely-on-assumptions." class="slide level2">
+<h2>T-Tests rely on assumptions.</h2>
+<ul>
+<li class="fragment">Normality (Are both samples normally distributed?)</li>
+<li class="fragment">Equality of Variance (Are the variables spread out roughly the same amount?)</li>
+</ul>
+</section>
+<section id="if-either-of-these-assumptions-arent-met-our-t-test-could-be-misleading" class="slide level2">
+<h2>If either of these assumptions aren’t met, our t-test could be misleading!</h2>
+</section>
+<section id="parametric-hypothesis-tests-were-designed-to-solve-a-problem-before-computers-existed-but-now-there-are-other-approaches." class="slide level2">
+<h2>“Parametric” hypothesis tests were designed to solve a problem before computers existed, but now there are other approaches.</h2>
+</section></section>
+<section>
+<section id="resampling" class="title-slide slide level1">
+<h1>Resampling</h1>
+
+</section>
+<section id="resampling-is-simply-drawing-multiple-random-samples-from-observed-data." class="slide level2">
+<h2>Resampling is simply drawing multiple random samples from observed data.</h2>
+<p>I can grab a sample of 5 observations. Then I can “resample” 5 more. Then 5 more, and so on and so on.</p>
+</section>
+<section id="first-proposed-in-the-1960s-resampling-procedures-werent-practical-until-computing-took-off-in-the-1980s." class="slide level2">
+<h2>First proposed in the 1960s, resampling procedures weren’t practical until computing took off in the 1980s.</h2>
+</section>
+<section id="resampling-is-an-umbrella-term.-it-can-include" class="slide level2">
+<h2>Resampling is an umbrella term. It can include:</h2>
+<ul>
+<li class="fragment">The Bootstrap, used to assess the reliability of an estimated statistic</li>
+<li class="fragment">Permutation Tests, used as an alternative to parametric hypothesis tests</li>
+</ul>
+</section>
+<section id="you-can-resample-with-or-without-replacement." class="slide level2">
+<h2>You can resample with or without <em>replacement</em>.</h2>
+<p>Replacement means an item is returned to the sample before the next draw (i.e. you could wind up with the same observation multiple times).</p>
+</section></section>
+<section>
+<section id="permutation-tests" class="title-slide slide level1">
+<h1>Permutation Tests</h1>
+
+</section>
+<section id="a-permutation-test-solves-the-t-test-problem" class="slide level2">
+<h2>A permutation test solves the t-test problem!</h2>
+<p>It doesn’t matter whether the samples are normally distributed or whether their variance is equal. There are no assumptions in a permutation test.</p>
+</section>
+<section id="permute-means-to-change-the-order-of-a-set-of-values." class="slide level2">
+<h2><em>Permute</em> means to change the order of a set of values.</h2>
+<p>In a permutation test, you rearrange groups randomly to determine a permutation distribution.</p>
+</section>
+<section id="a-permutation-distribution-embodies-the-null-hypothesis." class="slide level2">
+<h2>A permutation distribution embodies the <em>null hypothesis</em>.</h2>
+<p>It shows you what the distribution would look like if the difference between the groups was the result of random variation.</p>
+</section>
+<section id="you-can-create-a-permutation-procedure-to-replace-different-kinds-of-statistical-tests." class="slide level2">
+<h2>You can create a permutation procedure to replace different kinds of statistical tests.</h2>
+<p>Let’s look at the steps of a permutation test that would replace a two-sample t-test…</p>
+</section>
+<section class="slide level2">
+
+<ol type="1">
+<li class="fragment">Randomly resample (without replacement) a group the same size at the first group.</li>
+<li class="fragment">From the remaining data, randomly resample (without replacement) a group the same size as the second group.</li>
+<li class="fragment">Calculate the difference in means between the two resamples. This is one permutation.</li>
+<li class="fragment">Repeat these steps as many times as you want to create a permutation distribution.</li>
+<li class="fragment">Compare the observed difference in the real groups to the permutation distribution.</li>
+</ol>
+</section>
+<section id="you-can-use-the-permutation-distribution-to-calculate-a-p-value." class="slide level2">
+<h2>You can use the permutation distribution to calculate a p-value.</h2>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

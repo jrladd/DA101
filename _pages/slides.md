@@ -24,6 +24,7 @@ permalink: /slides/
 [Visualizing Data](/DA101/slides/visualizing)  
 [Exploratory Data Analysis](/DA101/slides/eda)  
 [Hypothesis Testing](/DA101/slides/hypothesis)  
+[Resampling](/DA101/slides/resampling)
 
 ## Predictive Analytics
 
