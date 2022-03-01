@@ -56,3 +56,106 @@ Let's look at the steps of a permutation test that would replace a two-sample t-
 5. Compare the observed difference in the real groups to the permutation distribution.
 
 ## You can use the permutation distribution to calculate a p-value.
+
+# Permutation Tests in R
+
+## Let's look again at the mpg dataset.
+
+```r
+library(tidyverse)
+
+mpg <- mpg
+
+ggplot(mpg, aes(x=class,y=cty)) +
+	geom_boxplot()
+```
+
+## What's the difference in means?
+
+```r
+compact_sub <- mpg %>%
+	filter(class=="compact"|class=="subcompact")
+
+cs_means <- compact_sub %>%
+	group_by(class) %>%
+	summarize(avg_cty = mean(cty), count = n())
+```
+
+## Functions create reusable code
+
+```r
+adding_func <- function(x,n) {
+	sum <- x + n
+	return(sum)
+}
+
+adding_func(4,2)
+```
+
+First name the function and define input. Then do something and return a result!
+
+## Repeat functions with `replicate`
+
+```r
+repeated_adding <- replicate(100, adding_func(4,2))
+```
+
+## Create a random `sample`
+
+```r
+sample(mpg$cty, 10)
+```
+
+## Let's create a function for permutation!
+
+```r
+permutation_func <- function(x, nA) {
+	idx_a <- sample(1:length(x), nA) # Get a sample the size of group 1
+	idx_b <- setdiff(1:length(x), idx_a) # Get the rest of the data
+	mean_diff <- mean(x[idx_a]) - mean(x[idx_b]) # Subtract the means
+	return(mean_diff)
+}
+```
+
+You can reuse this!
+
+## Now we can make 1000 permutations.
+
+```r
+perm_means <- replicate(1000, permutation_func(compact_sub$cty, 47))
+```
+
+Where does the 47 come from?
+
+## Let's look at the results in a histogram
+
+```r
+ggplot(,aes(x=perm_means)) +
+	geom_histogram() +
+	geom_vline(xintercept = .2, color="red")
+```
+
+Where did .2 come from? Can we calculate it more accurately?
+
+## Finally, we can calculate a p-value:
+
+```r
+mean(perm_means > .2)
+```
+
+Why does this code work?
+
+Is our result statistically significant? Is it practically significant?
+
+# You Try It!
+
+## Permutation Exercise
+
+Determine if users spend significantly more time on Page B than they do on Page A.
+
+1. Download <a href="https://jrladd.com/DA101/data/web_page_data.csv" download>web_page_data.csv</a>.
+2. Make a boxplot of session times for Pages A and B.
+3. Calculate the observed difference in means.
+4. Run 2000 permutations of randomly resampled groups.
+5. Make a histogram of permutation results and show the observed difference as a vertical line.
+6. Calculate the p-value for your permutation test.
