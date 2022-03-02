@@ -27,9 +27,9 @@ Feb. 7-11|[Visualizing Data](/DA101/slides/visualizing); [Textbook Ch. 3](https:
 |**Module 2: Describe**|
 Feb. 14-18|[Exploratory Data Analysis](/DA101/slides/eda); [Textbook Ch. 7](https://r4ds.had.co.nz/exploratory-data-analysis.html); [Hypothesis Testing](/DA101/slides/hypothesis)|Substance Use: [01](https://classroom.github.com/a/h4Mchday), [03](https://classroom.github.com/a/JIlUsD7P)|[An unprecedented Nintendo leak turns into a moral dilemma for archivists](https://www.theverge.com/2020/7/30/21347074/nintendo-gigaleak-controversy-history-preservation-archives)
 Feb. 21-25|[Hypothesis Testing](/DA101/slides/hypothesis)|Audiobooks: [01](https://classroom.github.com/a/KW4H1WFz), [03](https://classroom.github.com/a/abLAdeMx)|[Stop Misusing P-Values](https://fivethirtyeight.com/features/statisticians-found-one-thing-they-can-agree-on-its-time-to-stop-misusing-p-values/); [Science Isn't Broken](https://fivethirtyeight.com/features/science-isnt-broken/)
-Feb. 28-Mar.4|[Resampling](/DA101/slides/resampling)|US Congress I: [01](https://classroom.github.com/a/j8E0dDU-)|[So About That Thermometer Data](https://slate.com/technology/2020/04/kinsa-smart-thermometer-data-fevers-covid19.html)
+Feb. 28-Mar.4|[Resampling](/DA101/slides/resampling)|US Congress I: [01](https://classroom.github.com/a/j8E0dDU-)|[Ethics, Bias, and Diversity](/DA101/slides/ethics)
 |**Module 3: Predict**|
-Mar. 7-11|[Linear Regression](/DA101/slides/predictive)|US Congress II|[The Happiness Calculator](https://gimletmedia.com/shows/reply-all/kwh96n)
+Mar. 7-11|[Linear Regression](/DA101/slides/predictive)|US Congress II|[The Happiness Calculator](https://gimletmedia.com/shows/reply-all/kwh96n), [So About That Thermometer Data](https://slate.com/technology/2020/04/kinsa-smart-thermometer-data-fevers-covid19.html)
 **SPRING BREAK**|
 Mar. 21-25|[Multiple Regression](/DA101/slides/multiple)|Airbnb|[Wine and Math](https://pudding.cool/2021/03/wine-model/)
 Mar. 28-Apr.1|[Network Analysis](/DA101/slides/networks)|Marvel Comics/Code Glossary II|[The Numbers Don't Speak for Themselves](https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/2)
