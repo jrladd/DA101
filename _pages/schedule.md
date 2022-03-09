@@ -15,7 +15,7 @@ sidebar:
 
 **On Monday and Wednesday we'll cover new topics and skills, and on Fridays we'll discuss readings related to those topics. This schedule also includes the topics for the Labs, which will reinforce what we do in class.**
 
-I will add Lab links to Github Classroom assignments before each week's lab. You'll find a [guide to using Github Classroom here](/DA101/githubclassroom).*
+I will add Lab links to Github Classroom assignments before each week's lab. You'll find a [guide to using Github Classroom here](/DA101/githubclassroom).
 
 Date|Mon./Wed. Topics|Lab|Fri. Discussion
 --|---|--|---
@@ -29,7 +29,7 @@ Feb. 14-18|[Exploratory Data Analysis](/DA101/slides/eda); [Textbook Ch. 7](http
 Feb. 21-25|[Hypothesis Testing](/DA101/slides/hypothesis)|Audiobooks: [01](https://classroom.github.com/a/KW4H1WFz), [03](https://classroom.github.com/a/abLAdeMx)|[Stop Misusing P-Values](https://fivethirtyeight.com/features/statisticians-found-one-thing-they-can-agree-on-its-time-to-stop-misusing-p-values/); [Science Isn't Broken](https://fivethirtyeight.com/features/science-isnt-broken/)
 Feb. 28-Mar.4|[Resampling](/DA101/slides/resampling)|US Congress I: [01](https://classroom.github.com/a/j8E0dDU-), [03](https://classroom.github.com/a/pzRZHjCp)|[Ethics, Bias, and Diversity](/DA101/slides/ethics)
 |**Module 3: Predict**|
-Mar. 7-11|[Linear Regression](/DA101/slides/predictive)|US Congress II: [01](https://classroom.github.com/a/A6x0r0n_)|[The Happiness Calculator](https://gimletmedia.com/shows/reply-all/kwh96n), [So About That Thermometer Data](https://slate.com/technology/2020/04/kinsa-smart-thermometer-data-fevers-covid19.html)
+Mar. 7-11|[Linear Regression](/DA101/slides/predictive)|US Congress II: [01](https://classroom.github.com/a/A6x0r0n_), [03](https://classroom.github.com/a/B56wsUZL)|[The Happiness Calculator](https://gimletmedia.com/shows/reply-all/kwh96n), [So About That Thermometer Data](https://slate.com/technology/2020/04/kinsa-smart-thermometer-data-fevers-covid19.html)
 **SPRING BREAK**|
 Mar. 21-25|[Multiple Regression](/DA101/slides/multiple)|Airbnb|[Wine and Math](https://pudding.cool/2021/03/wine-model/)
 Mar. 28-Apr.1|[Network Analysis](/DA101/slides/networks)|Marvel Comics/Code Glossary II|[The Numbers Don't Speak for Themselves](https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/2)
