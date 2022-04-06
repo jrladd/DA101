@@ -33,7 +33,7 @@ Mar. 7-11|[Linear Regression](/DA101/slides/predictive)|US Congress II: [01](htt
 **SPRING BREAK**|
 Mar. 21-25|[Multiple Regression](/DA101/slides/multiple)|Airbnb: [01](https://classroom.github.com/a/IyOrDJrq), [03](https://classroom.github.com/a/2ZT6HHq9)|[Wine and Math](https://pudding.cool/2021/03/wine-model/)
 Mar. 28-Apr.1|[Network Analysis](/DA101/slides/networks)|Marvel Comics: [01](https://classroom.github.com/a/1lgib3hG), [03](https://classroom.github.com/a/9gX9VLRY) & Code Glossary II|Outlier Conference
-Apr. 4-8|[Mapping and Spatial Data](/DA101/slides/mapping)|Final Project Launch: [01](https://classroom.github.com/a/QFy72YML)|NO CLASS; Complete Ethics Certification
+Apr. 4-8|[Mapping and Spatial Data](/DA101/slides/mapping)|Final Project Launch: [01](https://classroom.github.com/a/QFy72YML), [03](https://classroom.github.com/a/tEQoXCM2)|NO CLASS; Complete Ethics Certification
 Apr. 11-15|Text Data; [Textbook Ch. 14](https://r4ds.had.co.nz/strings.html)|Project Sprints|[The Numbers Don't Speak for Themselves](https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/2)
 |**Module 4: Communicate**|
 Apr. 18-22|[Debugging](/DA101/slides/debugging); Open Data Practices|Project Sprints|[Sweet & Slim, Greasy & Grim](https://pudding.cool/2020/07/gendered-descriptions/), [Embrace the Grind](https://jacobian.org/2021/apr/7/embrace-the-grind/)
